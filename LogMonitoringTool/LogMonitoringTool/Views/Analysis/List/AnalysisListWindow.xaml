@@ -5,12 +5,12 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:LogMonitoringTool.Views.AnalysisList"
+	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Analysis.List"
 	mc:Ignorable="d"
 	Title="解析項目一覧"
 	Height="300"
-	Width="300"
->
-	<Grid>
-
-	</Grid>
+	Width="300">
+	<Window.DataContext>
+		<vm:AnalysisListViewModel />
+	</Window.DataContext>
 </Window>

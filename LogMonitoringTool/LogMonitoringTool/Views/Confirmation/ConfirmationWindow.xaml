@@ -5,12 +5,12 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:LogMonitoringTool.Views.Analysis.Confirmation"
+	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Confirmation"
 	mc:Ignorable="d"
 	Title="ログ内容確認"
 	Height="300"
-	Width="300"
->
-	<Grid>
-		
-	</Grid>
+	Width="300">
+	<Window.DataContext>
+		<vm:ConfirmationViewModel />
+	</Window.DataContext>
 </Window>

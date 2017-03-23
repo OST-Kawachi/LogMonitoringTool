@@ -1,12 +1,17 @@
-﻿<Window x:Class="LogMonitoringTool.Views.Result.ResultWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LogMonitoringTool.Views.Result"
-        mc:Ignorable="d"
-        Title="ログ解析結果" Height="300" Width="300">
-    <Grid>
-        
-    </Grid>
+﻿<Window
+	x:Class="LogMonitoringTool.Views.Result.ResultWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Result"
+	mc:Ignorable="d"
+	Title="ログ解析結果"
+	Height="300"
+	Width="300"
+>
+	<Window.DataContext>
+		<vm:ResultViewModel />
+	</Window.DataContext>
+
 </Window>
