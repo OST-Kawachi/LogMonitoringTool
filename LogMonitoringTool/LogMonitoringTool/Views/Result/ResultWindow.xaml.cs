@@ -10,15 +10,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace LogMonitoringTool {
+namespace LogMonitoringTool.Views.Result {
 	/// <summary>
-	/// MainWindow.xaml の相互作用ロジック
+	/// ResultWindow.xaml の相互作用ロジック
 	/// </summary>
-	public partial class MainWindow : Window {
-		public MainWindow() {
+	public partial class ResultWindow : Window {
+		public ResultWindow() {
 			InitializeComponent();
 		}
 	}

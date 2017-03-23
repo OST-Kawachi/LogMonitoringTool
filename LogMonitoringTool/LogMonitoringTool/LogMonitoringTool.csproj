@@ -55,6 +55,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\Analysis\Edit\AnalysisEditViewModel.cs" />
+    <Compile Include="ViewModels\Analysis\List\AnalysisListViewModel.cs" />
+    <Compile Include="ViewModels\Confirmation\ConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.cs" />
+    <Compile Include="ViewModels\Result\ResultViewModel.cs" />
+    <Compile Include="Views\Confirmation\ConfirmationWindow.xaml.cs">
+      <DependentUpon>ConfirmationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Analysis\Edit\AnalysisEditWindow.xaml.cs">
+      <DependentUpon>AnalysisEditWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Analysis\List\AnalysisListWindow.xaml.cs">
+      <DependentUpon>AnalysisListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Result\ResultWindow.xaml.cs">
+      <DependentUpon>ResultWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,6 +87,26 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Confirmation\ConfirmationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Analysis\Edit\AnalysisEditWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Analysis\List\AnalysisListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Main\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Result\ResultWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -94,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
