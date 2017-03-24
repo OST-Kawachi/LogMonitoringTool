@@ -9,8 +9,53 @@
 	Title="{ Binding TitleText }"
 	Height="300"
 	Width="300" >
+	
 	<Window.DataContext>
 		<vm:MainViewModel />
 	</Window.DataContext>
+	
+	<Grid>
+		
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<!-- 選択したログファイル表示欄 -->
+		<Label
+			Grid.Row="0" 
+			Content="{ Binding SelectedLogFileName }" />
+
+		<!-- ログファイル参照ボタン -->
+		<Button
+			Grid.Row="1"
+			Content="{ Binding BrowseLogFileButtonContent }" />
+
+		<!-- ログ内容確認ボタン -->
+		<Button
+			Grid.Row="2"
+			Content="{ Binding ConfirmLogButtonContent }" />
+
+		<!-- 解析項目一覧表示ボタン -->
+		<Button
+			Grid.Row="3"
+			Content="{ Binding DisplayAnalysisListButtonContent }" />
+
+		<!-- ログ解析開始ボタン -->
+		<Button
+			Grid.Row="4"
+			Content="{ Binding StartLogAnalysisButtonContent }" />
+
+		<!-- 閉じるボタン -->
+		<Button
+			Grid.Row="5"
+			Content="{ Binding CloseButtonContent }"
+			Command="{ Binding ApplicationCloseCommand }" />
+
+	</Grid>
 	
 </Window>
