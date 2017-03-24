@@ -38,12 +38,14 @@
 		<!-- ログ内容確認ボタン -->
 		<Button
 			Grid.Row="2"
-			Content="{ Binding ConfirmLogButtonContent }" />
+			Content="{ Binding ConfirmLogButtonContent }" 
+			Command="{ Binding ShowConfirmLogWindowCommand }" />
 
 		<!-- 解析項目一覧表示ボタン -->
 		<Button
 			Grid.Row="3"
-			Content="{ Binding DisplayAnalysisListButtonContent }" />
+			Content="{ Binding DisplayAnalysisListButtonContent }" 
+			Command="{ Binding ShowAnalysisListWindowCommand }" />
 
 		<!-- ログ解析開始ボタン -->
 		<Button

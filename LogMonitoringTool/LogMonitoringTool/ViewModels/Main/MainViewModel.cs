@@ -1,5 +1,8 @@
 ﻿using LogMonitoringTool.Command.AppManipulation;
+using LogMonitoringTool.Command.ShowWindow;
 using LogMonitoringTool.Common;
+using LogMonitoringTool.Views.Analysis.Confirmation;
+using LogMonitoringTool.Views.AnalysisList;
 using System.Windows.Input;
 
 namespace LogMonitoringTool.ViewModels.Main {
@@ -45,10 +48,20 @@ namespace LogMonitoringTool.ViewModels.Main {
 		public string CloseButtonContent { get; }
 
 		/// <summary>
+		/// ログ内容確認ウィンドウ表示コマンド
+		/// </summary>
+		public ShowWindowCommand ShowConfirmLogWindowCommand { get; }
+
+		/// <summary>
+		/// 解析項目一覧ウィンドウ表示コマンド
+		/// </summary>
+		public ShowWindowCommand ShowAnalysisListWindowCommand { get; }
+		
+		/// <summary>
 		/// アプリ終了コマンド
 		/// </summary>
 		public ApplicationCloseCommand ApplicationCloseCommand { get; }
-
+		
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
@@ -61,6 +74,9 @@ namespace LogMonitoringTool.ViewModels.Main {
 			this.DisplayAnalysisListButtonContent = Const.FixedWording.MainWindow.DisplayAnalysisListButton;
 			this.StartLogAnalysisButtonContent = Const.FixedWording.MainWindow.StartLogAnalysisButton;
 			this.CloseButtonContent = Const.FixedWording.MainWindow.CloseButton;
+
+			this.ShowConfirmLogWindowCommand = new ShowWindowCommand( new ConfirmationWindow() );
+			this.ShowAnalysisListWindowCommand = new ShowWindowCommand( new AnalysisListWindow() );
 
 			this.ApplicationCloseCommand = new ApplicationCloseCommand();
 

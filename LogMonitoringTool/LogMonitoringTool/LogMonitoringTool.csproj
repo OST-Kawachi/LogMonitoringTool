@@ -55,7 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\AppManipulation\ApplicationCloseCommand.cs" />
+    <Compile Include="CommandHelper\AppManipulation\ApplicationCloseCommand.cs" />
+    <Compile Include="CommandHelper\ShowWindow\ShowWindowCommand.cs" />
     <Compile Include="Common\Const.cs" />
     <Compile Include="ViewModels\Analysis\Edit\AnalysisEditViewModel.cs" />
     <Compile Include="ViewModels\Analysis\List\AnalysisListViewModel.cs" />
