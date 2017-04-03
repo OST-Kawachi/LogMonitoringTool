@@ -27,6 +27,7 @@
 
 		<!-- 選択したログファイル表示欄 -->
 		<Label
+			x:Name="LogFileName"
 			Grid.Row="0" 
 			Content="{ Binding SelectedLogFileName }" />
 

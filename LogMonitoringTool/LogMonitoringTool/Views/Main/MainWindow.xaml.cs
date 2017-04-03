@@ -11,12 +11,10 @@ namespace LogMonitoringTool.Views.Main {
 	/// MainWindow.xaml の相互作用ロジック
 	/// </summary>
 	public partial class MainWindow : Window {
-
+		
 		/// <summary>
-		/// ログファイルパス
+		/// コンストラクタ
 		/// </summary>
-		private string logFilePath = "";
-
 		public MainWindow() {
 
 			InitializeComponent();
@@ -34,7 +32,7 @@ namespace LogMonitoringTool.Views.Main {
 			openFileDialog.FileName = "";
 			openFileDialog.DefaultExt = "*.*";
 			if( openFileDialog.ShowDialog() == true ) {
-				this.logFilePath = openFileDialog.FileName;
+				this.LogFileName.Content = openFileDialog.FileName;
 			}
 			
 		}
@@ -45,13 +43,13 @@ namespace LogMonitoringTool.Views.Main {
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OnClickConfirmLogButton( object sender , RoutedEventArgs e ) {
-
-			if( string.IsNullOrEmpty( this.logFilePath ) ) {
+			
+			if( string.IsNullOrEmpty( this.LogFileName.Content as string ) ) {
 				MessageBox.Show( "ログファイル参照から解析するログファイルを選択してください。" , "エラー" , MessageBoxButton.OK , MessageBoxImage.Error );
 				return;
 			}
 
-			ConfirmationWindow confirmationWindow = new ConfirmationWindow( this.logFilePath );
+			ConfirmationWindow confirmationWindow = new ConfirmationWindow( this.LogFileName.Content as string );
 			confirmationWindow.ShowDialog();
 
 		}
@@ -75,12 +73,12 @@ namespace LogMonitoringTool.Views.Main {
 		/// <param name="e"></param>
 		private void OnClickStartLogAnalysisButton( object sender , RoutedEventArgs e ) {
 
-			if( string.IsNullOrEmpty( this.logFilePath ) ) {
+			if( string.IsNullOrEmpty( this.LogFileName.Content as string ) ) {
 				MessageBox.Show( "ログファイル参照から解析するログファイルを選択してください。" , "エラー" , MessageBoxButton.OK , MessageBoxImage.Error );
 				return;
 			}
 
-			ResultWindow resultWindow = new ResultWindow( this.logFilePath );
+			ResultWindow resultWindow = new ResultWindow( this.LogFileName.Content as string );
 			resultWindow.ShowDialog();
 
 		}
