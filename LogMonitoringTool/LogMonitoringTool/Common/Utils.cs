@@ -8,7 +8,7 @@ namespace LogMonitoringTool.Common {
 	/// <summary>
 	/// 共通処理
 	/// </summary>
-	class Utils {
+	public class Utils {
 
 		/// <summary>
 		/// ファイルパスからファイル内のテキストを取得する
