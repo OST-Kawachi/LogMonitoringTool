@@ -1,5 +1,4 @@
-﻿using LogMonitoringTool.ViewModels.Result;
-using System.Windows;
+﻿using System.Windows;
 
 namespace LogMonitoringTool.Views.Result {
 
@@ -8,10 +7,14 @@ namespace LogMonitoringTool.Views.Result {
 	/// </summary>
 	public partial class ResultWindow : Window {
 
-		public ResultWindow() {
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		/// <param name="filePath">ファイルパス</param>
+		public ResultWindow( string filePath ) {
 
 			InitializeComponent();
-			
+						
 		}
 
 	}

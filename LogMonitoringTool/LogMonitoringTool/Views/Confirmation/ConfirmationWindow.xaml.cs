@@ -7,9 +7,15 @@ namespace LogMonitoringTool.Views.Analysis.Confirmation {
 	/// </summary>
 	public partial class ConfirmationWindow : Window {
 
-		public ConfirmationWindow() {
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		/// <param name="filePath">ファイルパス</param>
+		public ConfirmationWindow( string filePath ) {
 
 			InitializeComponent();
+
+
 
 		}
 

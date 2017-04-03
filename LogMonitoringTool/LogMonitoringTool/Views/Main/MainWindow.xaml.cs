@@ -29,14 +29,12 @@ namespace LogMonitoringTool.Views.Main {
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OnClickBrowseLogFileButton( object sender , RoutedEventArgs e ) {
-
-			string text = "";
-
+			
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.FileName = "";
 			openFileDialog.DefaultExt = "*.*";
 			if( openFileDialog.ShowDialog() == true ) {
-				text = openFileDialog.FileName;
+				this.logFilePath = openFileDialog.FileName;
 			}
 			
 		}
@@ -53,8 +51,8 @@ namespace LogMonitoringTool.Views.Main {
 				return;
 			}
 
-			ConfirmationWindow resultWindow = new ConfirmationWindow();
-			resultWindow.ShowDialog();
+			ConfirmationWindow confirmationWindow = new ConfirmationWindow( this.logFilePath );
+			confirmationWindow.ShowDialog();
 
 		}
 
@@ -82,7 +80,7 @@ namespace LogMonitoringTool.Views.Main {
 				return;
 			}
 
-			ResultWindow resultWindow = new ResultWindow();
+			ResultWindow resultWindow = new ResultWindow( this.logFilePath );
 			resultWindow.ShowDialog();
 
 		}
