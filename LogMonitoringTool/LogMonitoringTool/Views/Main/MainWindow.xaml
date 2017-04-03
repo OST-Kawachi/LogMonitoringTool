@@ -33,28 +33,32 @@
 		<!-- ログファイル参照ボタン -->
 		<Button
 			Grid.Row="1"
-			Content="{ Binding BrowseLogFileButtonContent }" />
+			Content="{ Binding BrowseLogFileButtonContent }"
+			Click="OnClickBrowseLogFileButton" />
 
 		<!-- ログ内容確認ボタン -->
 		<Button
 			Grid.Row="2"
-			Content="{ Binding ConfirmLogButtonContent }" />
+			Content="{ Binding ConfirmLogButtonContent }"
+			Click="OnClickConfirmLogButton" />
 
 		<!-- 解析項目一覧表示ボタン -->
 		<Button
 			Grid.Row="3"
-			Content="{ Binding DisplayAnalysisListButtonContent }" />
+			Content="{ Binding DisplayAnalysisListButtonContent }"
+			Click="OnClickDisplayAnalysisListButton" />
 
 		<!-- ログ解析開始ボタン -->
 		<Button
 			Grid.Row="4"
-			Content="{ Binding StartLogAnalysisButtonContent }" />
+			Content="{ Binding StartLogAnalysisButtonContent }" 
+			Click="OnClickStartLogAnalysisButton" />
 
 		<!-- 閉じるボタン -->
 		<Button
 			Grid.Row="5"
 			Content="{ Binding CloseButtonContent }"
-			Command="{ Binding ApplicationCloseCommand }" />
+			Click="OnClickCloseButton" />
 
 	</Grid>
 	
