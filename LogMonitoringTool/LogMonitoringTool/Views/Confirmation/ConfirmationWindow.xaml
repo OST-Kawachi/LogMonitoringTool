@@ -7,10 +7,39 @@
 	xmlns:local="clr-namespace:LogMonitoringTool.Views.Analysis.Confirmation"
 	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Confirmation"
 	mc:Ignorable="d"
-	Title="ログ内容確認"
+	Title="{ Binding TextTitle }"
 	Height="300"
 	Width="300">
+	
 	<Window.DataContext>
 		<vm:ConfirmationViewModel />
 	</Window.DataContext>
+
+	<Grid>
+
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<Label 
+			x:Name="FilePath"
+			Grid.Row="0"
+			IsEnabled="False" />
+
+		<ScrollViewer
+			Grid.Row="1" >
+			<TextBox
+				x:Name="TextOfFile"
+				IsEnabled="False" />
+		</ScrollViewer>
+
+		<Button
+			Grid.Row="2"
+			Content="{ Binding CloseButtonText }"
+			Click="OnClickCloseButton" />
+
+	</Grid>
+		
 </Window>

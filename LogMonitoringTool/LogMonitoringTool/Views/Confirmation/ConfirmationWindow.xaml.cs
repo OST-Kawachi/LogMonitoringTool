@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using LogMonitoringTool.Common;
+using System.Windows;
 
 namespace LogMonitoringTool.Views.Analysis.Confirmation {
 
@@ -15,10 +16,21 @@ namespace LogMonitoringTool.Views.Analysis.Confirmation {
 
 			InitializeComponent();
 
-
-
+			this.FilePath.Content = filePath;
+			this.TextOfFile.Text = Utils.GetTextOfFile( filePath );
 		}
 
+		/// <summary>
+		/// 閉じるボタン押下時イベント
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void OnClickCloseButton( object sender , RoutedEventArgs e ) {
+
+			this.Close();
+
+		}
+		
 	}
 
 }
