@@ -35,7 +35,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		/// <summary>
 		/// キャンセル
 		/// </summary>
-		public string CancelButton { get; }
+		public string CancelButtonContent { get; }
 
 		/// <summary>
 		/// 説明ラベル
@@ -49,7 +49,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			this.LiskLabel = Const.FixedWording.AnalysisEditWindow.LiskLabel;
 			this.RegularExpressionLabel = Const.FixedWording.AnalysisEditWindow.RegularExpressionLabel;
 			this.DecisionButtonContent = Const.FixedWording.AnalysisEditWindow.DecisionWhenNewlyCreatedButton;
-			this.CancelButton = Const.FixedWording.AnalysisEditWindow.CancelButton;
+			this.CancelButtonContent = Const.FixedWording.AnalysisEditWindow.CancelButton;
 			
 		}
 
