@@ -1,6 +1,4 @@
-﻿using LogMonitoringTool.Command.AppManipulation;
-using LogMonitoringTool.Common;
-using System.Windows.Input;
+﻿using LogMonitoringTool.Common;
 
 namespace LogMonitoringTool.ViewModels.Main {
 
@@ -43,12 +41,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 		/// 閉じるボタン
 		/// </summary>
 		public string CloseButtonContent { get; }
-
-		/// <summary>
-		/// アプリ終了コマンド
-		/// </summary>
-		public ApplicationCloseCommand ApplicationCloseCommand { get; }
-
+		
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
@@ -61,9 +54,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 			this.DisplayAnalysisListButtonContent = Const.FixedWording.MainWindow.DisplayAnalysisListButton;
 			this.StartLogAnalysisButtonContent = Const.FixedWording.MainWindow.StartLogAnalysisButton;
 			this.CloseButtonContent = Const.FixedWording.MainWindow.CloseButton;
-
-			this.ApplicationCloseCommand = new ApplicationCloseCommand();
-
+			
 		}
 
 	}

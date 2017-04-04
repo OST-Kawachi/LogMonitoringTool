@@ -55,9 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\AppManipulation\ApplicationCloseCommand.cs" />
     <Compile Include="Common\Const.cs" />
     <Compile Include="Common\Utils.cs" />
+    <Compile Include="Model\XmlSerialization\AnalysisDataXmlModel.cs" />
+    <Compile Include="Services\XmlSerialization\XmlSerializationService.cs" />
     <Compile Include="ViewModels\Analysis\Edit\AnalysisEditViewModel.cs" />
     <Compile Include="ViewModels\Analysis\List\AnalysisListViewModel.cs" />
     <Compile Include="ViewModels\Confirmation\ConfirmationViewModel.cs" />
@@ -132,7 +133,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
+    <Resource Include="Data\AnalysisFile\AnalysisData.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\ResultLog\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
