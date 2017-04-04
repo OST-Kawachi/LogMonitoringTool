@@ -124,7 +124,7 @@
 				/// <summary>
 				/// タイトル
 				/// </summary>
-				public const string TitleWhenNewlyCreated = "解析項目一覧";
+				public const string Title = "解析項目一覧";
 
 				/// <summary>
 				/// タイトルヘッダー
