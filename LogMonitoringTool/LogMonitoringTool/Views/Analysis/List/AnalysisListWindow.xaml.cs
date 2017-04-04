@@ -1,4 +1,5 @@
 ﻿using LogMonitoringTool.Services.XmlSerialization;
+using LogMonitoringTool.Views.Analysis.Edit;
 using System.Windows;
 
 namespace LogMonitoringTool.Views.AnalysisList {
@@ -64,14 +65,24 @@ namespace LogMonitoringTool.Views.AnalysisList {
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void OnClickNewCreationButton( object sender , RoutedEventArgs e ) { }
+		private void OnClickNewCreationButton( object sender , RoutedEventArgs e ) {
+
+			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow();
+			analysisEditWindow.ShowDialog();
+
+		}
 
 		/// <summary>
 		/// 編集ボタン押下時イベント
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void OnClickEditButton( object sender , RoutedEventArgs e ) { }
+		private void OnClickEditButton( object sender , RoutedEventArgs e ) {
+
+			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow();
+			analysisEditWindow.ShowDialog();
+
+		}
 
 		/// <summary>
 		/// 削除ボタン押下時イベント
