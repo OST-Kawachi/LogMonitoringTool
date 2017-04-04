@@ -7,11 +7,56 @@
 	xmlns:local="clr-namespace:LogMonitoringTool.Views.Analysis.Edit"
 	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Analysis.Edit"
 	mc:Ignorable="d"
-	Title="解析項目追加"
+	Title="{ Binding TitleText }"
 	Height="300"
 	Width="300"
 >
 	<Window.DataContext>
 		<vm:AnalysisEditViewModel />
 	</Window.DataContext>
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<Label
+			Grid.Row="0"
+			Grid.Column="0"
+			Content="{ Binding TitleLabel }" />
+
+		<Label
+			Grid.Row="1"
+			Grid.Column="0"
+			Content="{ Binding LiskLabel }" />
+
+		<Label
+			Grid.Row="2"
+			Grid.Column="0"
+			Content="{ Binding RegularExpressionLabel }" />
+
+		<Label
+			Grid.Row="3"
+			Grid.Column="0"
+			Content="{ Binding DescriptionLabel }" />
+
+		<Button
+			Grid.Row="4"
+			Grid.Column="0"
+			Content="{ Binding DecisionButtonContent }" />
+
+		<Button
+			Grid.Row="4"
+			Grid.Column="1"
+			Content="{ Binding CancelButtonContent }" />
+
+	</Grid>
 </Window>

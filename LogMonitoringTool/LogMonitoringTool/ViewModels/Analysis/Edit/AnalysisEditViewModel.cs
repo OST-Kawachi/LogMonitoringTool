@@ -48,6 +48,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			this.TitleLabel = Const.FixedWording.AnalysisEditWindow.TitleLabel;
 			this.LiskLabel = Const.FixedWording.AnalysisEditWindow.LiskLabel;
 			this.RegularExpressionLabel = Const.FixedWording.AnalysisEditWindow.RegularExpressionLabel;
+			this.DescriptionLabel = Const.FixedWording.AnalysisEditWindow.DescriptionLabel;
 			this.DecisionButtonContent = Const.FixedWording.AnalysisEditWindow.DecisionWhenNewlyCreatedButton;
 			this.CancelButtonContent = Const.FixedWording.AnalysisEditWindow.CancelButton;
 			
