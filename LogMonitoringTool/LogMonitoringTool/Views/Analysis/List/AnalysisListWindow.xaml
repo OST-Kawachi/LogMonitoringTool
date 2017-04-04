@@ -22,10 +22,24 @@
 		</Grid.ColumnDefinitions>
 
 		<DataGrid
-			x:Name="AnalysisListDataGrid"
-			Grid.Column="0" 
-			IsReadOnly="True" />
-		
+			Grid.Column="0"
+			IsReadOnly="True"
+			AutoGenerateColumns="False"
+			ItemsSource="{ Binding AnalysisDataGridItemsSource }">
+			<DataGrid.Columns>
+				<DataGridTextColumn
+					Header="タイトル"
+					Binding="{ Binding Title }" />
+				<DataGridTextColumn
+					Header="危険度"
+					Binding="{ Binding LiskLevel }" />
+				<DataGridTextColumn
+					Header="正規表現"
+					Binding="{ Binding RegularExpression }" />
+			</DataGrid.Columns>
+
+		</DataGrid>
+
 		<Grid
 			Grid.Column="1">
 			<Grid.RowDefinitions>

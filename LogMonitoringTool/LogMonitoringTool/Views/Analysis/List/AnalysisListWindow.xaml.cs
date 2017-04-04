@@ -8,55 +8,13 @@ namespace LogMonitoringTool.Views.AnalysisList {
 	/// AnalysisListWindow.xaml の相互作用ロジック
 	/// </summary>
 	public partial class AnalysisListWindow : Window {
-
-		/// <summary>
-		/// 解析項目
-		/// </summary>
-		private class AnalysisListDataGridItem {
-
-			/// <summary>
-			/// タイトル
-			/// </summary>
-			public string Title { set; get; }
-
-			/// <summary>
-			/// リスク
-			/// </summary>
-			public string LiskLevel { set; get; }
-
-			/// <summary>
-			/// 正規表現
-			/// </summary>
-			public string RegularExpression { set; get; }
-
-			/// <summary>
-			/// 詳細
-			/// </summary>
-			public string Detail { set; get; }
-
-		}
-
-		/// <summary>
-		/// XML読み書きService
-		/// </summary>
-		XmlSerializationService service;
-
+		
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
 		public AnalysisListWindow() {
 
 			InitializeComponent();
-
-			this.service = XmlSerializationService.GetInstance();
-
-			this.AnalysisListDataGrid.ItemsSource = new[] {
-				new AnalysisListDataGridItem() { Title = "タイトル" , LiskLevel = "危険度" , RegularExpression = "正規表現" , Detail = "詳細" } ,
-				new AnalysisListDataGridItem() { Title = "タイトル" , LiskLevel = "危険度" , RegularExpression = "正規表現" , Detail = "詳細" } ,
-				new AnalysisListDataGridItem() { Title = "タイトル" , LiskLevel = "危険度" , RegularExpression = "正規表現" , Detail = "詳細" } ,
-				new AnalysisListDataGridItem() { Title = "タイトル" , LiskLevel = "危険度" , RegularExpression = "正規表現" , Detail = "詳細" } ,
-				new AnalysisListDataGridItem() { Title = "タイトル" , LiskLevel = "危険度" , RegularExpression = "正規表現" , Detail = "詳細" }
-			};
 
 		}
 
