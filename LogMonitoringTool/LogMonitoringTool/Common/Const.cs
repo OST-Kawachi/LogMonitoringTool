@@ -182,6 +182,24 @@
 
 		}
 
+
+		/// <summary>
+		/// エラーダイアログに表示されるメッセージ
+		/// </summary>
+		public class ErrorDialogMessage {
+
+			/// <summary>
+			/// ログファイルが指定されていない時のタイトル
+			/// </summary>
+			public const string NoSelectedLogFileTitle = "ログファイルが指定されていません";
+
+			/// <summary>
+			/// ログファイルが指定されていない時のメッセージ
+			/// </summary>
+			public const string NoSelectedLogFileMessage = "ログファイル参照ボタンから解析するログファイルを選択してください";
+
+		}
+
 	}
 
 }

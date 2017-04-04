@@ -1,4 +1,5 @@
-﻿using LogMonitoringTool.Views.Analysis.Confirmation;
+﻿using LogMonitoringTool.Common;
+using LogMonitoringTool.Views.Analysis.Confirmation;
 using LogMonitoringTool.Views.AnalysisList;
 using LogMonitoringTool.Views.Result;
 using Microsoft.Win32;
@@ -45,7 +46,7 @@ namespace LogMonitoringTool.Views.Main {
 		private void OnClickConfirmLogButton( object sender , RoutedEventArgs e ) {
 			
 			if( string.IsNullOrEmpty( this.LogFileName.Content as string ) ) {
-				MessageBox.Show( "ログファイル参照から解析するログファイルを選択してください。" , "エラー" , MessageBoxButton.OK , MessageBoxImage.Error );
+				MessageBox.Show( Const.ErrorDialogMessage.NoSelectedLogFileMessage , Const.ErrorDialogMessage.NoSelectedLogFileTitle , MessageBoxButton.OK , MessageBoxImage.Error );
 				return;
 			}
 
@@ -74,7 +75,7 @@ namespace LogMonitoringTool.Views.Main {
 		private void OnClickStartLogAnalysisButton( object sender , RoutedEventArgs e ) {
 
 			if( string.IsNullOrEmpty( this.LogFileName.Content as string ) ) {
-				MessageBox.Show( "ログファイル参照から解析するログファイルを選択してください。" , "エラー" , MessageBoxButton.OK , MessageBoxImage.Error );
+				MessageBox.Show( Const.ErrorDialogMessage.NoSelectedLogFileMessage , Const.ErrorDialogMessage.NoSelectedLogFileTitle , MessageBoxButton.OK , MessageBoxImage.Error );
 				return;
 			}
 
