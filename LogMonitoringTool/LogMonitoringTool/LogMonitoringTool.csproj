@@ -55,9 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BusinessObject\Risk\RiskEntity.cs" />
     <Compile Include="Common\Const.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Model\XmlSerialization\AnalysisDataXmlModel.cs" />
+    <Compile Include="Services\Risk\RiskService.cs" />
     <Compile Include="Services\XmlSerialization\XmlSerializationService.cs" />
     <Compile Include="ViewModels\Analysis\Edit\AnalysisEditViewModel.cs" />
     <Compile Include="ViewModels\Analysis\List\AnalysisListViewModel.cs" />
