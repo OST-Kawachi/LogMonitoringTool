@@ -23,7 +23,7 @@ namespace LogMonitoringTool.Services.XmlSerialization {
 		/// <summary>
 		/// ファイルパス
 		/// </summary>
-		private const string FileName = @"\\Data\AnalysisFile\AnalysisData.xml";
+		private const string FileName = @"C:\Project\LogMonitoringTool\LogMonitoringTool\LogMonitoringTool\Data\AnalysisFile\AnalysisData.xml";
 
 		/// <summary>
 		/// コンストラクタ
