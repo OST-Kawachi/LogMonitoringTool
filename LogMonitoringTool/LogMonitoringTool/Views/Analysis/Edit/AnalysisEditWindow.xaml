@@ -32,6 +32,10 @@
 			Grid.Row="0"
 			Grid.Column="0"
 			Content="{ Binding TitleLabel }" />
+		
+		<TextBox 
+			Grid.Row="0"
+			Grid.Column="1" />
 
 		<Label
 			Grid.Row="1"
@@ -43,10 +47,18 @@
 			Grid.Column="0"
 			Content="{ Binding RegularExpressionLabel }" />
 
+		<TextBox
+			Grid.Row="2"
+			Grid.Column="1" />
+
 		<Label
 			Grid.Row="3"
 			Grid.Column="0"
 			Content="{ Binding DescriptionLabel }" />
+
+		<TextBox
+			Grid.Row="3"
+			Grid.Column="1" />
 
 		<Button
 			Grid.Row="4"
