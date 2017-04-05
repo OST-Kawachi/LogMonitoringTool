@@ -1,4 +1,5 @@
 ﻿using LogMonitoringTool.Common;
+using LogMonitoringTool.Model.XmlSerialization;
 using LogMonitoringTool.Services.XmlSerialization;
 using System.Collections.Generic;
 
@@ -102,13 +103,20 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 			this.xmlSerializationService = XmlSerializationService.GetInstance();
 
-			this.AnalysisDataGridItemsSource = new List<AnalysisListDataGridItem>() { 
-				new AnalysisListDataGridItem() { Title = "１た" , LiskLevel = "１危険度" , RegularExpression = "１正規表現" , Detail = "１詳細" } ,
-				new AnalysisListDataGridItem() { Title = "２い" , LiskLevel = "２危険度" , RegularExpression = "２正規表現" , Detail = "２詳細" } ,
-				new AnalysisListDataGridItem() { Title = "３と" , LiskLevel = "３危険度" , RegularExpression = "３正規表現" , Detail = "３詳細" } ,
-				new AnalysisListDataGridItem() { Title = "４る" , LiskLevel = "４危険度" , RegularExpression = "４正規表現" , Detail = "４詳細" } ,
-				new AnalysisListDataGridItem() { Title = "５！" , LiskLevel = "５危険度" , RegularExpression = "５正規表現" , Detail = "５詳細" }
-			};
+			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
+			if( this.xmlSerializationService?.model?.items != null ) {
+				foreach( AnalysisDataXmlModel.ItemModel item in this.xmlSerializationService.model.items ) {
+					list.Add( 
+						new AnalysisListDataGridItem() {
+							Title = item.title ,
+							LiskLevel = item.risk ,
+							RegularExpression = item.regex ,
+							Detail = item.info
+						}
+					);
+				}
+			}
+			this.AnalysisDataGridItemsSource = list;
 
 		}
 
