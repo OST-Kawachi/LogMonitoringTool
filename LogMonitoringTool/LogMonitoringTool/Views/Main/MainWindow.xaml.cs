@@ -2,7 +2,6 @@
 using LogMonitoringTool.Views.Analysis.Confirmation;
 using LogMonitoringTool.Views.AnalysisList;
 using LogMonitoringTool.Views.Result;
-using Microsoft.Win32;
 using System;
 using System.Windows;
 

@@ -46,7 +46,8 @@
 			Grid.Row="1"
 			Grid.Column="1"
 			DisplayMemberPath="Display"
-			ItemsSource="{ Binding LiskItemsSource }" />
+			ItemsSource="{ Binding LiskItemsSource }" 
+			SelectedIndex="0" />
 
 		<Label
 			Grid.Row="2"
@@ -69,12 +70,14 @@
 		<Button
 			Grid.Row="4"
 			Grid.Column="0"
-			Content="{ Binding DecisionButtonContent }" />
+			Content="{ Binding DecisionButtonContent }" 
+			Click="OnClickDecisionButton"/>
 
 		<Button
 			Grid.Row="4"
 			Grid.Column="1"
-			Content="{ Binding CancelButtonContent }" />
+			Content="{ Binding CancelButtonContent }"
+			Click="OnClickCancelButton" />
 
 	</Grid>
 </Window>

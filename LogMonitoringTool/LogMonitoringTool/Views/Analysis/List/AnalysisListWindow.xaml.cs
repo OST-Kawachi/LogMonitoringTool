@@ -1,5 +1,4 @@
-﻿using LogMonitoringTool.Services.XmlSerialization;
-using LogMonitoringTool.Views.Analysis.Edit;
+﻿using LogMonitoringTool.Views.Analysis.Edit;
 using System.Windows;
 
 namespace LogMonitoringTool.Views.AnalysisList {
@@ -54,7 +53,11 @@ namespace LogMonitoringTool.Views.AnalysisList {
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		private void OnClickCloseButton( object sender , RoutedEventArgs e ) { }
+		private void OnClickCloseButton( object sender , RoutedEventArgs e ) {
+
+			this.Close();
+
+		}
 		
 	}
 
