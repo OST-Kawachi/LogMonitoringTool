@@ -23,22 +23,6 @@ namespace LogMonitoringTool.Views.Main {
 		}
 
 		/// <summary>
-		/// ログファイル参照ボタン押下時イベント
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnClickBrowseLogFileButton( object sender , RoutedEventArgs e ) {
-			
-			OpenFileDialog openFileDialog = new OpenFileDialog();
-			openFileDialog.FileName = "";
-			openFileDialog.DefaultExt = "*.*";
-			if( openFileDialog.ShowDialog() == true ) {
-				this.LogFileName.Content = openFileDialog.FileName;
-			}
-			
-		}
-
-		/// <summary>
 		/// ログ確認ボタン押下時イベント
 		/// </summary>
 		/// <param name="sender"></param>

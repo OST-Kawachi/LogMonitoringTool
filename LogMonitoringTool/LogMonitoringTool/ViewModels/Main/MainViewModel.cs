@@ -1,4 +1,7 @@
-﻿using LogMonitoringTool.Common;
+﻿using LogMonitoringTool.Commands;
+using LogMonitoringTool.Common;
+using Microsoft.Win32;
+using System;
 
 namespace LogMonitoringTool.ViewModels.Main {
 
@@ -44,8 +47,51 @@ namespace LogMonitoringTool.ViewModels.Main {
 		/// <summary>
 		/// 選択したログファイル
 		/// </summary>
-		public string SelectedLogFileName { set; get; }
+		private string selectedLogFileName;
+		/// <summary>
+		/// 選択したログファイル
+		/// </summary>
+		public string SelectedLogFileName {
+			set {
+				SetProperty( ref this.selectedLogFileName , value , "SelectedLogFileName" );
+			}
+			get {
+				return this.selectedLogFileName;
+			}
+		}
 
+		#region ファイル選択ダイアログを開くコマンドの実装
+
+		/// <summary>
+		/// ファイル選択ダイアログを開くコマンド
+		/// </summary>
+		private DelegateCommand openFileCommand;
+		/// <summary>
+		/// ファイル選択ダイアログを開くコマンド
+		/// </summary>
+		public DelegateCommand OpenFileCommand {
+			get {
+				if( this.openFileCommand == null )
+					this.openFileCommand = new DelegateCommand( OpenFileExecute );
+				return this.openFileCommand;
+			}
+		}
+		/// <summary>
+		/// ファイル選択ダイアログを開くコマンドの実行イベント
+		/// </summary>
+		private void OpenFileExecute() {
+
+			OpenFileDialog openFileDialog = new OpenFileDialog();
+			openFileDialog.FileName = "";
+			openFileDialog.DefaultExt = "*.*";
+			if( openFileDialog.ShowDialog() == true ) {
+				this.SelectedLogFileName = openFileDialog.FileName;
+			}
+
+		}
+
+		#endregion
+	
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
