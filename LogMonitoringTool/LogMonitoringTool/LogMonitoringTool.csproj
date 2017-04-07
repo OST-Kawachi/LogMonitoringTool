@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BusinessObject\AnalysisData\AnalysisEntity.cs" />
     <Compile Include="BusinessObject\Risk\RiskEntity.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Common\Const.cs" />
@@ -137,7 +138,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\AnalysisFile\AnalysisData.xml" />
+    <Resource Include="Data\System\AnalysisData.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\ResultLog\" />

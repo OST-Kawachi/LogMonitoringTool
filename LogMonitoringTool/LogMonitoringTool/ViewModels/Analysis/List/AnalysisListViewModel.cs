@@ -1,4 +1,5 @@
-﻿using LogMonitoringTool.Commands;
+﻿using LogMonitoringTool.BusinessObject.AnalysisData;
+using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Model.XmlSerialization;
 using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
@@ -229,17 +230,16 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 			this.view = view;
 
-			AnalysisDataXmlModel model = AnalysisDataSerializationService.Load();
-			
+			List<AnalysisEntity> analysisEntities = AnalysisDataSerializationService.Load();
 			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
-			if( model?.items != null ) {
-				foreach( AnalysisDataXmlModel.ItemModel item in model.items ) {
+			if( analysisEntities != null ) {
+				foreach( AnalysisEntity item in analysisEntities ) {
 					list.Add( 
 						new AnalysisListDataGridItem() {
-							Title = item.title ,
-							LiskLevel = item.risk ,
-							RegularExpression = item.regex ,
-							Detail = item.info
+							Title = item.Title ,
+							LiskLevel = item.Risk ,
+							RegularExpression = item.RegularExpression ,
+							Detail = item.Info
 						}
 					);
 				}

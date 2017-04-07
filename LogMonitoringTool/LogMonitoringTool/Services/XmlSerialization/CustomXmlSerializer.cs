@@ -23,15 +23,22 @@ namespace LogMonitoringTool.Services.XmlSerialization {
 
 			ModelType model = new ModelType();
 
-			using( FileStream fileStream = new FileStream( filePath , FileMode.Open ) )
-			using( StreamReader streamReader = new StreamReader( fileStream , Encoding.UTF8 ) ) {
-				try {
-					XmlSerializer serializer = new XmlSerializer( model.GetType() );
-					model = (ModelType)serializer.Deserialize( streamReader );
+			try {
+
+				using( FileStream fileStream = new FileStream( filePath , FileMode.Open ) )
+				using( StreamReader streamReader = new StreamReader( fileStream , Encoding.UTF8 ) ) {
+					try {
+						XmlSerializer serializer = new XmlSerializer( model.GetType() );
+						model = (ModelType)serializer.Deserialize( streamReader );
+					}
+					catch( InvalidOperationException ) {
+						model = default( ModelType );
+					}
 				}
-				catch( InvalidOperationException ) {
-					model = default( ModelType );
-				}
+
+			}
+			catch( DirectoryNotFoundException ) {
+				return model = default( ModelType );
 			}
 
 			return model;
