@@ -7,7 +7,7 @@
 	xmlns:local="clr-namespace:LogMonitoringTool.Views.Analysis.Confirmation"
 	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Confirmation"
 	mc:Ignorable="d"
-	Title="{ Binding TextTitle }"
+	Title="{ Binding TitleText }"
 	Height="300"
 	Width="300">
 	
