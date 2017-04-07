@@ -59,28 +59,13 @@ namespace LogMonitoringTool.Commands {
 		}
 		
 		/// <summary>
-		/// 実行可否
-		/// </summary>
-		/// <returns>実行可否</returns>
-		public bool CanExecute() {
-			return this.canExecute();
-		}
-
-		/// <summary>
-		/// 実行イベント
-		/// </summary>
-		public void Execute() {
-			this.execute();
-		}
-
-		/// <summary>
 		/// ICommand.CanExecuteの明示的な実装
 		/// CanExecuteメソッドに処理を委譲
 		/// </summary>
 		/// <param name="parameter">パラメータ</param>
 		/// <returns>実行可否</returns>
 		bool ICommand.CanExecute(object parameter ) {
-			return this.CanExecute();
+			return this.canExecute();
 		}
 		
 		/// <summary>
@@ -89,7 +74,7 @@ namespace LogMonitoringTool.Commands {
 		/// </summary>
 		/// <param name="parameter">パラメータ</param>
 		void ICommand.Execute(object parameter ) {
-			this.Execute();
+			this.execute();
 		}
 		
 	}

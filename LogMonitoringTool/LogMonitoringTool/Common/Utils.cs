@@ -21,8 +21,7 @@ namespace LogMonitoringTool.Common {
 			string resultText = "";
 
 			try {
-
-				//ファイルを開く
+				
 				using( StreamReader sr = new StreamReader( filePath , Encoding.GetEncoding( "Shift_JIS" ) ) ) {
 
 					string text = "";
