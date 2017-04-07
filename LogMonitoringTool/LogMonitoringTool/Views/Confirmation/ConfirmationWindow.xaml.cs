@@ -16,7 +16,7 @@ namespace LogMonitoringTool.Views.Analysis.Confirmation {
 
 			InitializeComponent();
 
-			this.DataContext = new ConfirmationViewModel( filePath );
+			this.DataContext = new ConfirmationViewModel( filePath , this );
 			
 		}
 

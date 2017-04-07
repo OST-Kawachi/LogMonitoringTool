@@ -1,4 +1,6 @@
-﻿using LogMonitoringTool.Common;
+﻿using LogMonitoringTool.Commands;
+using LogMonitoringTool.Common;
+using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Confirmation {
 
@@ -35,8 +37,12 @@ namespace LogMonitoringTool.ViewModels.Confirmation {
 			get {
 				return this.filePath;
 			}
-
 		}
+
+		/// <summary>
+		/// 対になるView
+		/// </summary>
+		private Window view;
 
 		/// <summary>
 		/// ファイル内のテキスト
@@ -54,10 +60,40 @@ namespace LogMonitoringTool.ViewModels.Confirmation {
 			}
 		}
 
+		#region ウィンドウを閉じるコマンドの実装
+
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装
+		/// </summary>
+		private DelegateCommand closeWindowCommand;
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装
+		/// </summary>
+		public DelegateCommand CloseWindowCommand {
+			get {
+				if( this.closeWindowCommand == null )
+					this.closeWindowCommand = new DelegateCommand( this.CloseWindowExecute );
+				return this.closeWindowCommand;
+			}
+		}
+
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装の実行イベント
+		/// </summary>
+		private void CloseWindowExecute() {
+
+			this.view?.Close();
+
+		}
+
+		#endregion
+
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
-		public ConfirmationViewModel( string filePath ) {
+		/// <param name="filePath">ファイルパス</param>
+		/// <param name="view">対になるView</param>
+		public ConfirmationViewModel( string filePath , Window view ) {
 
 			#region 固定文言
 
@@ -67,6 +103,8 @@ namespace LogMonitoringTool.ViewModels.Confirmation {
 			#endregion
 
 			this.FilePath = filePath;
+			this.view = view;
+
 			this.TextOfFile = Utils.GetTextOfFile( filePath );
 
 		}
