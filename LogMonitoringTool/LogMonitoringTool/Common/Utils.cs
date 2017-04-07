@@ -2,6 +2,7 @@
 using System.IO;
 using System.Text;
 using System.Windows;
+using static LogMonitoringTool.Common.Const;
 
 namespace LogMonitoringTool.Common {
 
@@ -35,7 +36,7 @@ namespace LogMonitoringTool.Common {
 
 			}
 			catch( Exception ) {
-				MessageBox.Show( "ログファイルが開けませんでした。\nShiftJISのtxtファイルとして保存しなおし、再度確認してください。" , "エラー" , MessageBoxButton.OK , MessageBoxImage.Error );
+				MessageBox.Show( ErrorDialogMessage.CantOpenLogFileMessage , ErrorDialogMessage.CantOpenLogFileTitle , MessageBoxButton.OK , MessageBoxImage.Error );
 			}
 
 			return resultText;

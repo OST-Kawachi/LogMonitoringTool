@@ -198,6 +198,16 @@
 			/// </summary>
 			public const string NoSelectedLogFileMessage = "ログファイル参照ボタンから解析するログファイルを選択してください";
 
+			/// <summary>
+			/// ログファイルが開けなかった時のタイトル
+			/// </summary>
+			public const string CantOpenLogFileTitle = "ログファイルが開けませんでした。";
+
+			/// <summary>
+			/// ログファイルが開けなかった時のメッセージ
+			/// </summary>
+			public const string CantOpenLogFileMessage = "ログファイルが開けませんでした。\nShiftJISのtxtファイルとして保存しなおし、再度確認してください。";
+
 		}
 
 	}
