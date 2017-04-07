@@ -1,4 +1,5 @@
-﻿using LogMonitoringTool.Views.Analysis.Edit;
+﻿using LogMonitoringTool.ViewModels.Analysis.List;
+using LogMonitoringTool.Views.Analysis.Edit;
 using System.Windows;
 
 namespace LogMonitoringTool.Views.AnalysisList {
@@ -14,6 +15,8 @@ namespace LogMonitoringTool.Views.AnalysisList {
 		public AnalysisListWindow() {
 
 			InitializeComponent();
+
+			this.DataContext = new AnalysisListViewModel( this );
 
 		}
 
@@ -47,18 +50,7 @@ namespace LogMonitoringTool.Views.AnalysisList {
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void OnClickDeleteButton( object sender , RoutedEventArgs e ) { }
-
-		/// <summary>
-		/// 閉じるボタン押下時イベント
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnClickCloseButton( object sender , RoutedEventArgs e ) {
-
-			this.Close();
-
-		}
-		
+				
 	}
 
 }

@@ -1,14 +1,16 @@
-﻿using LogMonitoringTool.Common;
+﻿using LogMonitoringTool.Commands;
+using LogMonitoringTool.Common;
 using LogMonitoringTool.Model.XmlSerialization;
 using LogMonitoringTool.Services.XmlSerialization;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 	/// <summary>
 	/// AnalysisListWindowのViewModel
 	/// </summary>
-	public class AnalysisListViewModel {
+	public class AnalysisListViewModel : ViewModelBase {
 
 		/// <summary>
 		/// タイトル
@@ -88,9 +90,42 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		private XmlSerializationService xmlSerializationService;
 
 		/// <summary>
+		/// 対になるView
+		/// </summary>
+		private Window view;
+		
+		#region ウィンドウを閉じるコマンドの実装
+
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装
+		/// </summary>
+		private DelegateCommand closeWindowCommand;
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装
+		/// </summary>
+		public DelegateCommand CloseWindowCommand {
+			get {
+				if( this.closeWindowCommand == null )
+					this.closeWindowCommand = new DelegateCommand( this.CloseWindowExecute );
+				return this.closeWindowCommand;
+			}
+		}
+
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装の実行イベント
+		/// </summary>
+		private void CloseWindowExecute() {
+
+			this.view?.Close();
+
+		}
+
+		#endregion
+		
+		/// <summary>
 		/// コンストラクタ
 		/// </summary>
-		public AnalysisListViewModel() {
+		public AnalysisListViewModel( Window view ) {
 
 			this.TitleText = Const.FixedWording.AnalysisListWindow.Title;
 			this.TitleHeader = Const.FixedWording.AnalysisListWindow.TitleHeader;
@@ -100,6 +135,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 			this.EditButtonContent = Const.FixedWording.AnalysisListWindow.EditButton;
 			this.DeleteButtonContent = Const.FixedWording.AnalysisListWindow.DeleteButton;
 			this.CloseButtonContent = Const.FixedWording.AnalysisListWindow.CloseButton;
+
+			this.view = view;
 
 			this.xmlSerializationService = XmlSerializationService.GetInstance();
 

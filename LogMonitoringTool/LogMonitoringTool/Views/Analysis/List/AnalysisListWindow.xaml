@@ -10,10 +10,6 @@
 	Title="{ Binding TitleText }"
 	Height="300"
 	Width="300">
-
-	<Window.DataContext>
-		<vm:AnalysisListViewModel />
-	</Window.DataContext>
 	
 	<Grid>
 		<Grid.ColumnDefinitions>
@@ -37,7 +33,6 @@
 					Header="正規表現"
 					Binding="{ Binding RegularExpression }" />
 			</DataGrid.Columns>
-
 		</DataGrid>
 
 		<Grid
@@ -66,8 +61,8 @@
 
 			<Button
 				Grid.Row="3"
-				Content="{ Binding CloseButtonContent }" 
-				Click="OnClickCloseButton" />
+				Content="{ Binding CloseButtonContent }"
+				Command="{ Binding CloseWindowCommand }" />
 
 		</Grid>
 		
