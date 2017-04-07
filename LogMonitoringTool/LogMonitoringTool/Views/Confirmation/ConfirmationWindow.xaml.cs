@@ -1,4 +1,4 @@
-﻿using LogMonitoringTool.Common;
+﻿using LogMonitoringTool.ViewModels.Confirmation;
 using System.Windows;
 
 namespace LogMonitoringTool.Views.Analysis.Confirmation {
@@ -16,8 +16,8 @@ namespace LogMonitoringTool.Views.Analysis.Confirmation {
 
 			InitializeComponent();
 
-			this.FilePath.Content = filePath;
-			this.TextOfFile.Text = Utils.GetTextOfFile( filePath );
+			this.DataContext = new ConfirmationViewModel( filePath );
+			
 		}
 
 		/// <summary>
