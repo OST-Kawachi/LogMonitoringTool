@@ -2,6 +2,8 @@
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Model.XmlSerialization;
 using LogMonitoringTool.Services.XmlSerialization;
+using LogMonitoringTool.Views.Analysis.Edit;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -11,6 +13,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 	/// AnalysisListWindowのViewModel
 	/// </summary>
 	public class AnalysisListViewModel : ViewModelBase {
+
+		#region 固定文言
 
 		/// <summary>
 		/// タイトル
@@ -51,6 +55,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// 閉じるボタン
 		/// </summary>
 		public string CloseButtonContent { get; }
+
+		#endregion
 
 		/// <summary>
 		/// 解析項目
@@ -94,6 +100,92 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		private Window view;
 		
+		#region 解析項目新規追加コマンドの実装
+
+		/// <summary>
+		/// 解析項目新規追加コマンドの実装
+		/// </summary>
+		private DelegateCommand newCreationAnalysisCommand;
+		/// <summary>
+		/// 解析項目新規追加コマンドの実装
+		/// </summary>
+		public DelegateCommand NewCreationAnalysisCommand {
+			get {
+				if( this.newCreationAnalysisCommand == null )
+					this.newCreationAnalysisCommand = new DelegateCommand( this.NewCreationAnalysisExecute );
+				return this.newCreationAnalysisCommand;
+			}
+		}
+
+		/// <summary>
+		/// 解析項目新規追加コマンドの実装の実行イベント
+		/// </summary>
+		private void NewCreationAnalysisExecute() {
+
+			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow();
+			analysisEditWindow.ShowDialog();
+
+		}
+
+		#endregion
+
+		#region 解析項目編集コマンドの実装
+
+		/// <summary>
+		/// 解析項目編集コマンドの実装
+		/// </summary>
+		private DelegateCommand editAnalysisCommand;
+		/// <summary>
+		/// 解析項目編集コマンドの実装
+		/// </summary>
+		public DelegateCommand EditAnalysisCommand {
+			get {
+				if( this.editAnalysisCommand == null )
+					this.editAnalysisCommand = new DelegateCommand( this.EditAnalysisExecute );
+				return this.editAnalysisCommand;
+			}
+		}
+
+		/// <summary>
+		/// 解析項目編集コマンドの実装の実行イベント
+		/// </summary>
+		private void EditAnalysisExecute() {
+
+			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow();
+			analysisEditWindow.ShowDialog();
+
+		}
+
+		#endregion
+
+		#region 解析項目削除コマンドの実装
+
+		/// <summary>
+		/// 解析項目削除コマンドの実装
+		/// </summary>
+		private DelegateCommand deleteAnalysisCommand;
+		/// <summary>
+		/// 解析項目削除コマンドの実装
+		/// </summary>
+		public DelegateCommand DeleteAnalysisCommand {
+			get {
+				if( this.deleteAnalysisCommand == null )
+					this.deleteAnalysisCommand = new DelegateCommand( this.DeleteAnalysisExecute );
+				return this.deleteAnalysisCommand;
+			}
+		}
+
+		/// <summary>
+		/// 解析項目削除コマンドの実装の実行イベント
+		/// </summary>
+		private void DeleteAnalysisExecute() {
+
+			Console.WriteLine( "delete" );
+
+		}
+
+		#endregion
+		
 		#region ウィンドウを閉じるコマンドの実装
 
 		/// <summary>
@@ -127,6 +219,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		public AnalysisListViewModel( Window view ) {
 
+			#region 固定文言
+
 			this.TitleText = Const.FixedWording.AnalysisListWindow.Title;
 			this.TitleHeader = Const.FixedWording.AnalysisListWindow.TitleHeader;
 			this.LiskHeader = Const.FixedWording.AnalysisListWindow.LiskHeader;
@@ -135,6 +229,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 			this.EditButtonContent = Const.FixedWording.AnalysisListWindow.EditButton;
 			this.DeleteButtonContent = Const.FixedWording.AnalysisListWindow.DeleteButton;
 			this.CloseButtonContent = Const.FixedWording.AnalysisListWindow.CloseButton;
+
+			#endregion
 
 			this.view = view;
 
