@@ -1,7 +1,7 @@
 ﻿using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Model.XmlSerialization;
-using LogMonitoringTool.Services.XmlSerialization;
+using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
 using LogMonitoringTool.Views.Analysis.Edit;
 using System;
 using System.Collections.Generic;
@@ -89,12 +89,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// 一覧のItemsSource
 		/// </summary>
 		public List<AnalysisListDataGridItem> AnalysisDataGridItemsSource { set; get; }
-
-		/// <summary>
-		/// XML読み書きService
-		/// </summary>
-		private XmlSerializationService xmlSerializationService;
-
+		
 		/// <summary>
 		/// 対になるView
 		/// </summary>
@@ -234,11 +229,11 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 			this.view = view;
 
-			this.xmlSerializationService = XmlSerializationService.GetInstance();
-
+			AnalysisDataXmlModel model = AnalysisDataSerializationService.Load();
+			
 			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
-			if( this.xmlSerializationService?.model?.items != null ) {
-				foreach( AnalysisDataXmlModel.ItemModel item in this.xmlSerializationService.model.items ) {
+			if( model?.items != null ) {
+				foreach( AnalysisDataXmlModel.ItemModel item in model.items ) {
 					list.Add( 
 						new AnalysisListDataGridItem() {
 							Title = item.title ,
