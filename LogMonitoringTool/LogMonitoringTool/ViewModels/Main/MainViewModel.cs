@@ -4,6 +4,7 @@ using LogMonitoringTool.Views.Analysis.Confirmation;
 using LogMonitoringTool.Views.AnalysisList;
 using LogMonitoringTool.Views.Result;
 using Microsoft.Win32;
+using System;
 using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Main {
@@ -23,7 +24,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 		/// <summary>
 		/// ログファイル参照ボタン表示文字
 		/// </summary>
-		public string BrowseLogFileButtonContent { get; }
+		public string OpenFileDialogButtonContent { get; }
 
 		/// <summary>
 		/// ログ内容確認ボタン表示文字
@@ -68,21 +69,23 @@ namespace LogMonitoringTool.ViewModels.Main {
 		/// <summary>
 		/// ファイル選択ダイアログを開くコマンド
 		/// </summary>
-		private DelegateCommand openFileCommand;
+		private DelegateCommand openFileDialogCommand;
 		/// <summary>
 		/// ファイル選択ダイアログを開くコマンド
 		/// </summary>
-		public DelegateCommand OpenFileCommand {
+		public DelegateCommand OpenFileDialogCommand {
 			get {
-				if( this.openFileCommand == null )
-					this.openFileCommand = new DelegateCommand( this.OpenFileExecute );
-				return this.openFileCommand;
+				if( this.openFileDialogCommand == null )
+					this.openFileDialogCommand = new DelegateCommand( this.OpenFileDialogExecute );
+				return this.openFileDialogCommand;
 			}
 		}
+
 		/// <summary>
 		/// ファイル選択ダイアログを開くコマンドの実行イベント
+		/// 選択したファイルの絶対パスを<see cref="SelectedLogFileName" />に渡す 
 		/// </summary>
-		private void OpenFileExecute() {
+		private void OpenFileDialogExecute() {
 
 			OpenFileDialog openFileDialog = new OpenFileDialog();
 			openFileDialog.FileName = "";
@@ -111,8 +114,10 @@ namespace LogMonitoringTool.ViewModels.Main {
 				return this.showConfirmationDialogCommand;
 			}
 		}
+
 		/// <summary>
 		/// ログ確認ダイアログを開くコマンドの実行イベント
+		/// <see cref="SelectedLogFileName"/>にパスが入っていない場合はエラーダイアログを表示する
 		/// </summary>
 		private void ShowConfirmationDialogExecute() {
 
@@ -144,6 +149,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 				return this.showAnalysisListDialogCommand;
 			}
 		}
+
 		/// <summary>
 		/// 解析項目一覧ダイアログを開くコマンドの実行イベント
 		/// </summary>
@@ -159,11 +165,11 @@ namespace LogMonitoringTool.ViewModels.Main {
 		#region 解析を開始して、解析結果ダイアログを開くコマンドの実装
 
 		/// <summary>
-		/// 解析を開始して、解析結果ダイアログを開くコマンドの実装
+		/// 解析結果ダイアログを開くコマンドの実装
 		/// </summary>
 		private DelegateCommand showResultDialogCommand;
 		/// <summary>
-		/// 解析を開始して、解析結果ダイアログを開くコマンドの実装
+		/// 解析結果ダイアログを開くコマンドの実装
 		/// </summary>
 		public DelegateCommand ShowResultDialogCommand {
 			get {
@@ -172,8 +178,10 @@ namespace LogMonitoringTool.ViewModels.Main {
 				return this.showResultDialogCommand;
 			}
 		}
+
 		/// <summary>
-		/// 解析を開始して、解析結果ダイアログを開くコマンドの実装の実行イベント
+		/// 解析結果ダイアログを開くコマンドの実装の実行イベント
+		/// <see cref="SelectedLogFileName"/>にパスが入っていない場合はエラーダイアログを表示する
 		/// </summary>
 		private void ShowResultDialogExecute() {
 
@@ -189,6 +197,35 @@ namespace LogMonitoringTool.ViewModels.Main {
 
 		#endregion
 
+		#region アプリを終了するコマンドの実装
+
+		/// <summary>
+		/// アプリを終了するコマンドの実装
+		/// </summary>
+		private DelegateCommand exitAppCommand;
+		/// <summary>
+		/// アプリを終了するコマンドの実装
+		/// </summary>
+		public DelegateCommand ExitAppCommand {
+			get {
+				if( this.exitAppCommand == null )
+					this.exitAppCommand = new DelegateCommand( this.ExitAppExecute );
+				return this.exitAppCommand;
+			}
+		}
+
+		/// <summary>
+		/// アプリを終了するコマンドの実装の実行イベント
+		/// </summary>
+		private void ExitAppExecute() {
+
+			Environment.Exit( 0 );
+
+		}
+
+		#endregion
+
+
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
@@ -197,7 +234,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 			#region 固定文言
 
 			this.TitleText = Const.FixedWording.MainWindow.Title;
-			this.BrowseLogFileButtonContent = Const.FixedWording.MainWindow.BrowseLogFileButton;
+			this.OpenFileDialogButtonContent = Const.FixedWording.MainWindow.BrowseLogFileButton;
 			this.ConfirmLogButtonContent = Const.FixedWording.MainWindow.ConfirmLogButton;
 			this.DisplayAnalysisListButtonContent = Const.FixedWording.MainWindow.DisplayAnalysisListButton;
 			this.StartLogAnalysisButtonContent = Const.FixedWording.MainWindow.StartLogAnalysisButton;

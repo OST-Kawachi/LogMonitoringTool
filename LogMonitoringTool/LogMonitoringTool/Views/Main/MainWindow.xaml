@@ -34,8 +34,8 @@
 		<!-- ログファイル参照ボタン -->
 		<Button
 			Grid.Row="1"
-			Content="{ Binding BrowseLogFileButtonContent }"
-			Command="{ Binding OpenFileCommand }" />
+			Content="{ Binding OpenFileDialogButtonContent }"
+			Command="{ Binding OpenFileDialogCommand }" />
 
 		<!-- ログ内容確認ボタン -->
 		<Button
@@ -59,7 +59,7 @@
 		<Button
 			Grid.Row="5"
 			Content="{ Binding CloseButtonContent }"
-			Click="OnClickCloseButton" />
+			Command="{ Binding ExitAppCommand }" />
 
 	</Grid>
 	

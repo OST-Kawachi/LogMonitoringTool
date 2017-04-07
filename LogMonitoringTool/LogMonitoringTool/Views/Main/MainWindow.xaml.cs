@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace LogMonitoringTool.Views.Main {
 
@@ -17,15 +16,6 @@ namespace LogMonitoringTool.Views.Main {
 
 		}
 		
-		/// <summary>
-		/// 閉じるボタン押下時イベント
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnClickCloseButton( object sender , RoutedEventArgs e ) {
-			Environment.Exit( 0 );
-		}
-
 	}
 
 }
