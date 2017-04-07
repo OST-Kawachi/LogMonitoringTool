@@ -1,7 +1,10 @@
 ﻿using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
+using LogMonitoringTool.Views.Analysis.Confirmation;
+using LogMonitoringTool.Views.AnalysisList;
+using LogMonitoringTool.Views.Result;
 using Microsoft.Win32;
-using System;
+using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Main {
 
@@ -72,7 +75,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 		public DelegateCommand OpenFileCommand {
 			get {
 				if( this.openFileCommand == null )
-					this.openFileCommand = new DelegateCommand( OpenFileExecute );
+					this.openFileCommand = new DelegateCommand( this.OpenFileExecute );
 				return this.openFileCommand;
 			}
 		}
@@ -91,7 +94,101 @@ namespace LogMonitoringTool.ViewModels.Main {
 		}
 
 		#endregion
-	
+
+		#region ログ確認ダイアログを開くコマンドの実装
+
+		/// <summary>
+		/// ログ確認ダイアログを開くコマンド
+		/// </summary>
+		private DelegateCommand showConfirmationDialogCommand;
+		/// <summary>
+		/// ログ確認ダイアログを開くコマンド
+		/// </summary>
+		public DelegateCommand ShowConfirmationDialogCommand {
+			get {
+				if( this.showConfirmationDialogCommand == null )
+					this.showConfirmationDialogCommand = new DelegateCommand( this.ShowConfirmationDialogExecute );
+				return this.showConfirmationDialogCommand;
+			}
+		}
+		/// <summary>
+		/// ログ確認ダイアログを開くコマンドの実行イベント
+		/// </summary>
+		private void ShowConfirmationDialogExecute() {
+
+			if( string.IsNullOrEmpty( this.SelectedLogFileName ) ) {
+				MessageBox.Show( Const.ErrorDialogMessage.NoSelectedLogFileMessage , Const.ErrorDialogMessage.NoSelectedLogFileTitle , MessageBoxButton.OK , MessageBoxImage.Error );
+				return;
+			}
+
+			ConfirmationWindow confirmationWindow = new ConfirmationWindow( this.SelectedLogFileName );
+			confirmationWindow.ShowDialog();
+
+		}
+
+		#endregion
+
+		#region 解析項目一覧ダイアログを開くコマンドの実装
+
+		/// <summary>
+		/// 解析項目一覧ダイアログを開くコマンド
+		/// </summary>
+		private DelegateCommand showAnalysisListDialogCommand;
+		/// <summary>
+		/// 解析項目一覧ダイアログを開くコマンド
+		/// </summary>
+		public DelegateCommand ShowAnalysisListDialogCommand {
+			get {
+				if( this.showAnalysisListDialogCommand == null )
+					this.showAnalysisListDialogCommand = new DelegateCommand( this.ShowAnalysisListDialogExecute );
+				return this.showAnalysisListDialogCommand;
+			}
+		}
+		/// <summary>
+		/// 解析項目一覧ダイアログを開くコマンドの実行イベント
+		/// </summary>
+		private void ShowAnalysisListDialogExecute() {
+
+			AnalysisListWindow analysisListWindow = new AnalysisListWindow();
+			analysisListWindow.ShowDialog();
+
+		}
+
+		#endregion
+
+		#region 解析を開始して、解析結果ダイアログを開くコマンドの実装
+
+		/// <summary>
+		/// 解析を開始して、解析結果ダイアログを開くコマンドの実装
+		/// </summary>
+		private DelegateCommand showResultDialogCommand;
+		/// <summary>
+		/// 解析を開始して、解析結果ダイアログを開くコマンドの実装
+		/// </summary>
+		public DelegateCommand ShowResultDialogCommand {
+			get {
+				if( this.showResultDialogCommand == null )
+					this.showResultDialogCommand = new DelegateCommand( this.ShowResultDialogExecute );
+				return this.showResultDialogCommand;
+			}
+		}
+		/// <summary>
+		/// 解析を開始して、解析結果ダイアログを開くコマンドの実装の実行イベント
+		/// </summary>
+		private void ShowResultDialogExecute() {
+
+			if( string.IsNullOrEmpty( this.selectedLogFileName ) ) {
+				MessageBox.Show( Const.ErrorDialogMessage.NoSelectedLogFileMessage , Const.ErrorDialogMessage.NoSelectedLogFileTitle , MessageBoxButton.OK , MessageBoxImage.Error );
+				return;
+			}
+				
+			ResultWindow resultWindow = new ResultWindow( this.selectedLogFileName );
+			resultWindow.ShowDialog();
+
+		}
+
+		#endregion
+
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>

@@ -41,19 +41,19 @@
 		<Button
 			Grid.Row="2"
 			Content="{ Binding ConfirmLogButtonContent }"
-			Click="OnClickConfirmLogButton" />
+			Command="{ Binding ShowConfirmationDialogCommand }" />
 
 		<!-- 解析項目一覧表示ボタン -->
 		<Button
 			Grid.Row="3"
 			Content="{ Binding DisplayAnalysisListButtonContent }"
-			Click="OnClickDisplayAnalysisListButton" />
+			Command="{ Binding ShowAnalysisListDialogCommand }" />
 
 		<!-- ログ解析開始ボタン -->
 		<Button
 			Grid.Row="4"
-			Content="{ Binding StartLogAnalysisButtonContent }" 
-			Click="OnClickStartLogAnalysisButton" />
+			Content="{ Binding StartLogAnalysisButtonContent }"
+			Command="{ Binding ShowResultDialogCommand }" />
 
 		<!-- 閉じるボタン -->
 		<Button
