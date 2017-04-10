@@ -174,6 +174,16 @@
 				public const string Title = "ログ解析結果";
 
 				/// <summary>
+				/// 解析前ログタイトル
+				/// </summary>
+				public const string BeforeLogTitle = "解析前ログ";
+
+				/// <summary>
+				/// 解析結果ログタイトル
+				/// </summary>
+				public const string AfterLogTitle = "解析結果ログ";
+
+				/// <summary>
 				/// 閉じるボタン
 				/// </summary>
 				public const string CloseButton = "閉じる";
