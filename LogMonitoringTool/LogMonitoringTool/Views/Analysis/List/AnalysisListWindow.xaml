@@ -9,12 +9,12 @@
 	mc:Ignorable="d"
 	Title="{ Binding TitleText }"
 	Height="300"
-	Width="300">
+	Width="800">
 	
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition />
-			<ColumnDefinition />
+			<ColumnDefinition Width="180" />
 		</Grid.ColumnDefinitions>
 
 		<DataGrid
@@ -25,10 +25,12 @@
 			<DataGrid.Columns>
 				<DataGridTextColumn
 					Header="タイトル"
-					Binding="{ Binding Title }" />
+					Binding="{ Binding Title }" 
+					Width="200"/>
 				<DataGridTextColumn
 					Header="危険度"
-					Binding="{ Binding LiskLevel }" />
+					Binding="{ Binding LiskLevel }" 
+					Width="80"/>
 				<DataGridTextColumn
 					Header="正規表現"
 					Binding="{ Binding RegularExpression }" />
@@ -38,9 +40,10 @@
 		<Grid
 			Grid.Column="1">
 			<Grid.RowDefinitions>
-				<RowDefinition />
-				<RowDefinition />
-				<RowDefinition />
+				<RowDefinition Height="40" />
+				<RowDefinition Height="40" />
+				<RowDefinition Height="40" />
+				<RowDefinition Height="40" />
 				<RowDefinition />
 			</Grid.RowDefinitions>
 

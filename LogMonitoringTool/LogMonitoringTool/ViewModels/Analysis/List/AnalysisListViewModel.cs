@@ -1,7 +1,6 @@
 ﻿using LogMonitoringTool.BusinessObject.AnalysisData;
 using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
-using LogMonitoringTool.Model.XmlSerialization;
 using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
 using LogMonitoringTool.Views.Analysis.Edit;
 using System;

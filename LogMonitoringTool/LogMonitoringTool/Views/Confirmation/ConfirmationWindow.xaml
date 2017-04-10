@@ -8,19 +8,19 @@
 	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Confirmation"
 	mc:Ignorable="d"
 	Title="{ Binding TitleText }"
-	Height="300"
-	Width="300">
+	Height="600"
+	Width="400">
 
 	<Grid>
 
 		<Grid.RowDefinitions>
-			<RowDefinition />
-			<RowDefinition />
-			<RowDefinition />
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="30"/>
 		</Grid.RowDefinitions>
 
-		<Label
-			Content="{ Binding FilePath }"
+		<TextBox
+			Text="{ Binding FilePath }"
 			Grid.Row="0"
 			IsEnabled="False" />
 
