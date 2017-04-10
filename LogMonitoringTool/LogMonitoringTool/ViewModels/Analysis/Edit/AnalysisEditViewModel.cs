@@ -1,7 +1,10 @@
-﻿using LogMonitoringTool.BusinessObject.Risk;
+﻿using LogMonitoringTool.BusinessObject.AnalysisData;
+using LogMonitoringTool.BusinessObject.Risk;
+using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Services.Risk;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 
@@ -9,6 +12,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 	/// AnalysisEditWindowのViewModel
 	/// </summary>
 	public class AnalysisEditViewModel : ViewModelBase {
+
+		#region 固定文言
 
 		/// <summary>
 		/// タイトル
@@ -34,6 +39,20 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		/// 説明ラベル
 		/// </summary>
 		public string DescriptionLabel { get; }
+
+		/// <summary>
+		/// 決定ボタン
+		/// </summary>
+		public string DecisionButtonContent { get; }
+
+		/// <summary>
+		/// キャンセル
+		/// </summary>
+		public string CancelButtonContent { get; }
+
+		#endregion
+
+		#region コンボボックス定義
 
 		/// <summary>
 		/// コンボボックスのアイテム
@@ -63,18 +82,90 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			set { SetProperty<IEnumerable<ComboItem>>( ref this.liskItemsSource , value , "LiskItemsSource" ); }
 			get { return liskItemsSource; }
 		}
-		
-		/// <summary>
-		/// 決定ボタン
-		/// </summary>
-		public string DecisionButtonContent { get; }
 
 		/// <summary>
-		/// キャンセル
+		/// コンボボックスのアイテム一覧を返す
 		/// </summary>
-		public string CancelButtonContent { get; }
+		private IEnumerable<ComboItem> GetComboBoxItems() {
 
-		public AnalysisEditViewModel() {
+			RiskService riskService = new RiskService();
+			List<ComboItem> list = new List<ComboItem>();
+			foreach( RiskEntity entity in riskService.GetRiskEntities() ) {
+				list.Add( new ComboItem() { Id = entity.Id , Display = entity.Title } );
+			}
+			return list;
+		}
+
+		#endregion
+
+		/// <summary>
+		/// 対になるView
+		/// </summary>
+		private Window view;
+
+		#region 決定コマンドの実装
+
+		/// <summary>
+		/// 決定コマンドの実装
+		/// </summary>
+		private DelegateCommand decisionCommand;
+		/// <summary>
+		/// 決定コマンドの実装
+		/// </summary>
+		public DelegateCommand DecisionCommand {
+			get {
+				if( this.decisionCommand == null )
+					this.decisionCommand = new DelegateCommand( this.DecisionExecute );
+				return this.decisionCommand;
+			}
+		}
+
+		/// <summary>
+		/// 決定コマンドの実装の実行イベント
+		/// </summary>
+		private void DecisionExecute() {
+
+			this.view?.Close();
+
+		}
+
+		#endregion
+
+		#region キャンセルコマンドの実装
+
+		/// <summary>
+		/// キャンセルコマンドの実装
+		/// </summary>
+		private DelegateCommand cancelCommand;
+		/// <summary>
+		/// キャンセルコマンドの実装
+		/// </summary>
+		public DelegateCommand CancelCommand {
+			get {
+				if( this.cancelCommand == null )
+					this.cancelCommand = new DelegateCommand( this.CancelExecute );
+				return this.cancelCommand;
+			}
+		}
+
+		/// <summary>
+		/// キャンセルコマンドの実装の実行イベント
+		/// </summary>
+		private void CancelExecute() {
+
+			this.view?.Close();
+
+		}
+
+		#endregion
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		/// <param name="view">対になるView</param>
+		public AnalysisEditViewModel( Window view , AnalysisEntity editedEntity = null ) {
+
+			#region 固定文言
 
 			this.TitleText = Const.FixedWording.AnalysisEditWindow.TitleWhenNewlyCreated;
 			this.TitleLabel = Const.FixedWording.AnalysisEditWindow.TitleLabel;
@@ -84,12 +175,13 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			this.DecisionButtonContent = Const.FixedWording.AnalysisEditWindow.DecisionWhenNewlyCreatedButton;
 			this.CancelButtonContent = Const.FixedWording.AnalysisEditWindow.CancelButton;
 
-			RiskService riskService = new RiskService();
-			List<ComboItem> list = new List<ComboItem>();
-			foreach( RiskEntity entity in riskService.GetRiskEntities() ) {
-				list.Add( new ComboItem() { Id = entity.Id , Display = entity.Title } );
-			}
-			this.LiskItemsSource = list;
+			#endregion
+
+			this.view = view;
+
+			this.LiskItemsSource = this.GetComboBoxItems();
+
+			
 
 		}
 

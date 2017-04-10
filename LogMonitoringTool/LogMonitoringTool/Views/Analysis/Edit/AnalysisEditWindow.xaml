@@ -11,10 +11,7 @@
 	Height="180"
 	Width="500"
 >
-	<Window.DataContext>
-		<vm:AnalysisEditViewModel />
-	</Window.DataContext>
-
+	
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition />
@@ -85,12 +82,12 @@
 			<Button
 				Grid.Column="0"
 				Content="{ Binding DecisionButtonContent }"
-				Click="OnClickDecisionButton" />
+				Command="{ Binding DecisionCommand }" />
 
 			<Button
 				Grid.Column="1"
 				Content="{ Binding CancelButtonContent }"
-				Click="OnClickCancelButton" />
+				Command="{ Binding CancelCommand }" />
 
 		</Grid>
 		

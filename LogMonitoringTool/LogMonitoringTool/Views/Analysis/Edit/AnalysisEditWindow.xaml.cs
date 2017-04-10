@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using LogMonitoringTool.ViewModels.Analysis.Edit;
+using System.Windows;
 
 namespace LogMonitoringTool.Views.Analysis.Edit {
 
@@ -14,30 +15,10 @@ namespace LogMonitoringTool.Views.Analysis.Edit {
 
 			InitializeComponent();
 
-		}
-
-		/// <summary>
-		/// 決定ボタン押下時イベント
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnClickDecisionButton( object sender , RoutedEventArgs e ) {
-
-			this.Close();
+			this.DataContext = new AnalysisEditViewModel( this );
 
 		}
-
-		/// <summary>
-		/// キャンセルボタン押下時イベント
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void OnClickCancelButton( object sender , RoutedEventArgs e ) {
-
-			this.Close();
-
-		}
-
+				
 	}
 
 }
