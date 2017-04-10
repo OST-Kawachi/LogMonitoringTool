@@ -39,16 +39,26 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		/// 説明ラベル
 		/// </summary>
 		public string DescriptionLabel { get; }
+		
+		/// <summary>
+		/// キャンセル
+		/// </summary>
+		public string CancelButtonContent { get; }
+
+		#endregion
+
+		#region 決定ボタンの新規、編集時の文言変更
 
 		/// <summary>
 		/// 決定ボタン
 		/// </summary>
 		public string DecisionButtonContent { get; }
-
-		/// <summary>
-		/// キャンセル
-		/// </summary>
-		public string CancelButtonContent { get; }
+		
+		public string GetDecisionContent( AnalysisEntity entity ) {
+			return entity == null
+				? Const.FixedWording.AnalysisEditWindow.DecisionWhenNewlyCreatedButton
+				: Const.FixedWording.AnalysisEditWindow.DecisionWhenEditingButton;
+		}
 
 		#endregion
 
@@ -227,13 +237,14 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			this.LiskLabel = Const.FixedWording.AnalysisEditWindow.LiskLabel;
 			this.RegularExpressionLabel = Const.FixedWording.AnalysisEditWindow.RegularExpressionLabel;
 			this.DescriptionLabel = Const.FixedWording.AnalysisEditWindow.DescriptionLabel;
-			this.DecisionButtonContent = Const.FixedWording.AnalysisEditWindow.DecisionWhenNewlyCreatedButton;
 			this.CancelButtonContent = Const.FixedWording.AnalysisEditWindow.CancelButton;
 
 			#endregion
-
+			
 			this.view = view;
 			this.riskService = new RiskService();
+
+			this.DecisionButtonContent = this.GetDecisionContent( editedEntity );
 			this.LiskItemsSource = this.GetComboBoxItems();
 			this.InitInputData( editedEntity );
 
