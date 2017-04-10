@@ -8,19 +8,19 @@ namespace LogMonitoringTool.Views.Analysis.Edit {
 	/// AnalysisEditWindow.xaml の相互作用ロジック
 	/// </summary>
 	public partial class AnalysisEditWindow : Window {
-
+		
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
-		public AnalysisEditWindow() {
+		/// <param name="entity">編集時に受け取るデータ</param>
+		public AnalysisEditWindow( AnalysisEntity entity = null ) {
 
 			InitializeComponent();
 
-			this.DataContext = new AnalysisEditViewModel( this , 
-				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = "高" , RegularExpression = "aweofiij" , Info = "234234" } );
+			this.DataContext = new AnalysisEditViewModel( this , entity );
 
 		}
-				
+		
 	}
 
 }

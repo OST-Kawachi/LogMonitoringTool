@@ -146,7 +146,8 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		private void EditAnalysisExecute() {
 
-			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow();
+			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow( 
+				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = "高" , RegularExpression = "aweofiij" , Info = "234234" } );
 			analysisEditWindow.ShowDialog();
 
 		}
