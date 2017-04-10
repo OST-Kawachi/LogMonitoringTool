@@ -38,7 +38,8 @@
 
 			<TextBox
 				Grid.Row="0"
-				Grid.Column="1" />
+				Grid.Column="1" 
+				Text="{ Binding AnalysisTitleText }"/>
 
 			<Label
 				Grid.Row="1"
@@ -50,7 +51,7 @@
 				Grid.Column="1"
 				DisplayMemberPath="Display"
 				ItemsSource="{ Binding LiskItemsSource }"
-				SelectedIndex="0" />
+				SelectedIndex="{ Binding AnalysisRiskIndex }" />
 
 			<Label
 				Grid.Row="2"
@@ -59,7 +60,8 @@
 
 			<TextBox
 				Grid.Row="2"
-				Grid.Column="1" />
+				Grid.Column="1" 
+				Text="{ Binding AnalysisRegularExpressionText }"/>
 
 			<Label
 				Grid.Row="3"
@@ -68,7 +70,8 @@
 
 			<TextBox
 				Grid.Row="3"
-				Grid.Column="1" />
+				Grid.Column="1" 
+				Text="{ Binding AnalysisDescriptionText }"/>
 
 		</Grid>
 

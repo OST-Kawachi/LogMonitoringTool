@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0"?>
 <root>
 	<items>
-		<item no="1" title="ログ開始終了位置表示" risk="低" regex="(.)*\s([0-9])*\s[0-9]{2}:[0-9]{2}:[0-9]{2}\sost-x3\snewsyslog(.)*:\slogfile\sturned\sover\sdue\sto\ssize>(.)*K" info="ログ開始位置を表す　サイズが大きいといろいろある" />
+		<item no="1" title="ログ開始終了位置表示" risk="高" regex="(.)*\s([0-9])*\s[0-9]{2}:[0-9]{2}:[0-9]{2}\sost-x3\snewsyslog(.)*:\slogfile\sturned\sover\sdue\sto\ssize>(.)*K" info="ログ開始位置を表す　サイズが大きいといろいろある" />
 	</items>
 </root>

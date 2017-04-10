@@ -52,6 +52,11 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 
 		#endregion
 
+		/// <summary>
+		/// 危険度コンボボックスについてのService
+		/// </summary>
+		private RiskService riskService;
+
 		#region コンボボックス定義
 
 		/// <summary>
@@ -88,12 +93,15 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		/// </summary>
 		private IEnumerable<ComboItem> GetComboBoxItems() {
 
-			RiskService riskService = new RiskService();
 			List<ComboItem> list = new List<ComboItem>();
-			foreach( RiskEntity entity in riskService.GetRiskEntities() ) {
-				list.Add( new ComboItem() { Id = entity.Id , Display = entity.Title } );
+			if( this.riskService != null ) {
+				foreach( RiskEntity entity in riskService.GetRiskEntities() ) {
+					list.Add( new ComboItem() { Id = entity.Id , Display = entity.Title } );
+				}
 			}
+
 			return list;
+
 		}
 
 		#endregion
@@ -102,6 +110,53 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		/// 対になるView
 		/// </summary>
 		private Window view;
+
+		#region 入力項目
+
+		/// <summary>
+		/// タイトルテキスト
+		/// </summary>
+		public string AnalysisTitleText { set; get; }
+
+		/// <summary>
+		/// 危険度コンボボックスのIndex
+		/// </summary>
+		public int AnalysisRiskIndex { set; get; }
+
+		/// <summary>
+		/// 正規表現テキスト
+		/// </summary>
+		public string AnalysisRegularExpressionText { set; get; }
+
+		/// <summary>
+		/// 説明テキスト
+		/// </summary>
+		public string AnalysisDescriptionText { set; get; }
+
+		/// <summary>
+		/// 入力項目の初期表示
+		/// </summary>
+		/// <param name="editedEntity"></param>
+		private void InitInputData( AnalysisEntity editedEntity ) {
+
+			this.AnalysisTitleText = editedEntity?.Title ?? "";
+
+			if( editedEntity != null && editedEntity.Risk != null ) {
+				IEnumerable<RiskEntity> riskList = this.riskService.GetRiskEntities();
+				foreach( RiskEntity entity in riskList ) {
+					if( editedEntity.Risk.Equals( entity.Title ) )
+						this.AnalysisRiskIndex = entity.Id;
+				}
+			}
+			else
+				this.AnalysisRiskIndex = 0;
+
+			this.AnalysisRegularExpressionText = editedEntity?.RegularExpression ?? "";
+			this.AnalysisDescriptionText = editedEntity?.Info ?? "";
+
+		}
+
+		#endregion
 
 		#region 決定コマンドの実装
 
@@ -158,7 +213,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		}
 
 		#endregion
-
+		
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
@@ -178,10 +233,9 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			#endregion
 
 			this.view = view;
-
+			this.riskService = new RiskService();
 			this.LiskItemsSource = this.GetComboBoxItems();
-
-			
+			this.InitInputData( editedEntity );
 
 		}
 

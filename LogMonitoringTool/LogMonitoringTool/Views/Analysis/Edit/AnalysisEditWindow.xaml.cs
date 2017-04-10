@@ -1,4 +1,5 @@
-﻿using LogMonitoringTool.ViewModels.Analysis.Edit;
+﻿using LogMonitoringTool.BusinessObject.AnalysisData;
+using LogMonitoringTool.ViewModels.Analysis.Edit;
 using System.Windows;
 
 namespace LogMonitoringTool.Views.Analysis.Edit {
@@ -15,7 +16,8 @@ namespace LogMonitoringTool.Views.Analysis.Edit {
 
 			InitializeComponent();
 
-			this.DataContext = new AnalysisEditViewModel( this );
+			this.DataContext = new AnalysisEditViewModel( this , 
+				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = "高" , RegularExpression = "aweofiij" , Info = "234234" } );
 
 		}
 				
