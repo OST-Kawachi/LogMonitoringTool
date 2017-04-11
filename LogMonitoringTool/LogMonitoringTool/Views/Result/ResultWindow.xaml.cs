@@ -16,7 +16,7 @@ namespace LogMonitoringTool.Views.Result {
 
 			InitializeComponent();
 
-			this.DataContext = new ResultViewModel( filePath );
+			this.DataContext = new ResultViewModel( this , filePath );
 						
 		}
 

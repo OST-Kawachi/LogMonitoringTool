@@ -1,5 +1,7 @@
-﻿using LogMonitoringTool.Common;
+﻿using LogMonitoringTool.Commands;
+using LogMonitoringTool.Common;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Result {
 
@@ -53,12 +55,46 @@ namespace LogMonitoringTool.ViewModels.Result {
 		/// 解析結果一覧
 		/// </summary>
 		public List<ResultItem> AnalysisResultItems { set; get; }
-				
+
+		/// <summary>
+		/// 対になるView
+		/// </summary>
+		private Window view;
+
+		#region ウィンドウを閉じるコマンドの実装
+
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装
+		/// </summary>
+		private DelegateCommand closeWindowCommand;
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装
+		/// </summary>
+		public DelegateCommand CloseWindowCommand {
+			get {
+				if( this.closeWindowCommand == null )
+					this.closeWindowCommand = new DelegateCommand( this.CloseWindowExecute );
+				return this.closeWindowCommand;
+			}
+		}
+
+		/// <summary>
+		/// ウィンドウを閉じるコマンドの実装の実行イベント
+		/// </summary>
+		private void CloseWindowExecute() {
+
+			this.view?.Close();
+
+		}
+
+		#endregion
+
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
+		/// <param name="view">対になるView</param>
 		/// <param name="filePath">ファイルパス</param>
-		public ResultViewModel( string filePath ) {
+		public ResultViewModel( Window view , string filePath ) {
 
 			#region 固定文言
 
@@ -68,6 +104,8 @@ namespace LogMonitoringTool.ViewModels.Result {
 			this.CloseButtonContent = Const.FixedWording.ResultWindow.CloseButton;
 
 			#endregion
+
+			this.view = view;
 
 			this.AnalysisResultItems = new List<ResultItem>();
 			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
