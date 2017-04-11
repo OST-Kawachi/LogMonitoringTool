@@ -1,4 +1,5 @@
 ﻿using LogMonitoringTool.Common;
+using System.Collections.Generic;
 
 namespace LogMonitoringTool.ViewModels.Result {
 
@@ -32,10 +33,27 @@ namespace LogMonitoringTool.ViewModels.Result {
 		#endregion
 
 		/// <summary>
-		/// ファイル内のテキスト
+		/// 解析結果一覧項目
 		/// </summary>
-		public string TextOfFile { set; get; }
+		public class ResultItem {
 
+			/// <summary>
+			/// 解析前テキスト
+			/// </summary>
+			public string BeforeTextLine { set; get; }
+
+			/// <summary>
+			/// 解析後テキスト
+			/// </summary>
+			public string AfterTextLine { set; get; }
+
+		}
+
+		/// <summary>
+		/// 解析結果一覧
+		/// </summary>
+		public List<ResultItem> AnalysisResultItems { set; get; }
+				
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
@@ -51,7 +69,14 @@ namespace LogMonitoringTool.ViewModels.Result {
 
 			#endregion
 
-			this.TextOfFile = Utils.GetTextOfFile( filePath );
+			this.AnalysisResultItems = new List<ResultItem>();
+			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
+			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
+			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
+			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
+			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
+			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
+
 			
 		}
 

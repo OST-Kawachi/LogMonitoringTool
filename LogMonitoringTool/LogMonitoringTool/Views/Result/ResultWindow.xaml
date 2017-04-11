@@ -17,42 +17,20 @@
 			<RowDefinition Height="30" />
 		</Grid.RowDefinitions>
 
-		<Grid
-			Grid.Row="0" >
-			<Grid.RowDefinitions>
-				<RowDefinition
-					Height="30" />
-				<RowDefinition />
-			</Grid.RowDefinitions>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition />
-				<ColumnDefinition />
-			</Grid.ColumnDefinitions>
-
-			<Label
-				Grid.Row="0"
-				Grid.Column="0"
-				Content="{ Binding BeforeLogLabelContent }" />
-
-			<ScrollViewer
-				Grid.Row="1"
-				Grid.Column="0">
-				<TextBox
-					Text="{ Binding TextOfFile }" />
-			</ScrollViewer>
-
-			<Label
-				Grid.Row="0"
-				Grid.Column="1"
-				Content="{ Binding AfterLogLabelContent }" />
-
-			<ScrollViewer
-				Grid.Row="1"
-				Grid.Column="1">
-				<TextBox />
-			</ScrollViewer>
-
-		</Grid>
+		<DataGrid
+			Grid.Row="0"
+			IsReadOnly="True"
+			AutoGenerateColumns="False"
+			ItemsSource="{ Binding AnalysisResultItems }" >
+			<DataGrid.Columns>
+				<DataGridTextColumn
+					Header="解析前ログ" 
+					Binding="{ Binding BeforeTextLine }" />
+				<DataGridTextColumn
+					Header="解析結果ログ" 
+					Binding="{ Binding AfterTextLine }" />
+			</DataGrid.Columns>
+		</DataGrid>
 
 		<Button
 			Grid.Row="1" 
