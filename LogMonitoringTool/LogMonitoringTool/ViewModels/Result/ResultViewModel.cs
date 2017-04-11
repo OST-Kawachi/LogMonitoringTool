@@ -1,5 +1,6 @@
 ﻿using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -90,6 +91,33 @@ namespace LogMonitoringTool.ViewModels.Result {
 		#endregion
 
 		/// <summary>
+		/// 受け取ったテキストの1行を解析して返す
+		/// </summary>
+		/// <param name="line">解析前テキストの1行</param>
+		/// <returns>解析したテキストの1行</returns>
+		private string GetResultOfAnalysis( string line ) {
+			return line + "aaaaa";
+		}
+
+		/// <summary>
+		/// 受け取ったファイル内のテキストを1行ずつ解析して解析前と解析後の一覧を返す
+		/// </summary>
+		/// <param name="filePath">ファイルパス</param>
+		/// <returns>解析前と解析後の一覧</returns>
+		private List<ResultItem> GetAnalysisResultItems( string filePath ) {
+
+			List<ResultItem> list = new List<ResultItem>();
+
+			string textOfFile = Utils.GetTextOfFile( filePath );
+			foreach( string line in textOfFile.Split( '\n' ) ) {
+				list.Add( new ResultItem() { BeforeTextLine = line , AfterTextLine = this.GetResultOfAnalysis( line ) } );
+			}
+
+			return list;
+
+		}
+
+		/// <summary>
 		/// コンストラクタ
 		/// </summary>
 		/// <param name="view">対になるView</param>
@@ -106,16 +134,8 @@ namespace LogMonitoringTool.ViewModels.Result {
 			#endregion
 
 			this.view = view;
-
-			this.AnalysisResultItems = new List<ResultItem>();
-			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
-			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
-			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
-			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
-			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
-			this.AnalysisResultItems.Add( new ResultItem() { BeforeTextLine = "a" , AfterTextLine = "b" } );
-
-			
+			this.AnalysisResultItems = this.GetAnalysisResultItems( filePath );
+						
 		}
 
 	}
