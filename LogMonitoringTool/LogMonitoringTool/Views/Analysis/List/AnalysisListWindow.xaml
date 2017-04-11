@@ -21,19 +21,52 @@
 			Grid.Column="0"
 			IsReadOnly="True"
 			AutoGenerateColumns="False"
-			ItemsSource="{ Binding AnalysisDataGridItemsSource }">
+			ItemsSource="{ Binding AnalysisDataGridItemsSource }" >
 			<DataGrid.Columns>
-				<DataGridTextColumn
+				<DataGridTemplateColumn
 					Header="タイトル"
-					Binding="{ Binding Title }" 
-					Width="200"/>
-				<DataGridTextColumn
+					Width="200" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock
+								Text="{Binding Title }">
+								<TextBlock.ToolTip>
+									<TextBlock
+										Text="{Binding Detail }" />
+								</TextBlock.ToolTip>
+							</TextBlock>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn
 					Header="危険度"
-					Binding="{ Binding LiskLevel }" 
-					Width="80"/>
-				<DataGridTextColumn
-					Header="正規表現"
-					Binding="{ Binding RegularExpression }" />
+					Width="80">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock
+								Text="{Binding LiskLevel }">
+								<TextBlock.ToolTip>
+									<TextBlock
+										Text="{Binding Detail }" />
+								</TextBlock.ToolTip>
+							</TextBlock>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn
+					Header="正規表現">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock
+								Text="{Binding RegularExpression }">
+								<TextBlock.ToolTip>
+									<TextBlock
+										Text="{Binding Detail }" />
+								</TextBlock.ToolTip>
+							</TextBlock>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
 			</DataGrid.Columns>
 		</DataGrid>
 
