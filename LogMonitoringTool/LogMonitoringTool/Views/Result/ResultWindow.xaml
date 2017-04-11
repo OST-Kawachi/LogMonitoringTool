@@ -23,12 +23,28 @@
 			AutoGenerateColumns="False"
 			ItemsSource="{ Binding AnalysisResultItems }" >
 			<DataGrid.Columns>
-				<DataGridTextColumn
-					Header="解析前ログ" 
-					Binding="{ Binding BeforeTextLine }" />
-				<DataGridTextColumn
-					Header="解析結果ログ" 
-					Binding="{ Binding AfterTextLine }" />
+				<DataGridTemplateColumn
+					Header="解析前ログ" >
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock
+								Text="{Binding BeforeTextLine }"
+								Background="{ Binding BackgroundColor }" >
+							</TextBlock>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTemplateColumn
+					Header="解析結果ログ">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<TextBlock
+								Text="{Binding AfterTextLine }"
+								Background="{ Binding BackgroundColor }" >
+							</TextBlock>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
 			</DataGrid.Columns>
 		</DataGrid>
 

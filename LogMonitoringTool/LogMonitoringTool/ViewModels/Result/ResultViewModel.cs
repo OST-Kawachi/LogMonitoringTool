@@ -50,6 +50,11 @@ namespace LogMonitoringTool.ViewModels.Result {
 			/// </summary>
 			public string AfterTextLine { set; get; }
 
+			/// <summary>
+			/// 背景色
+			/// </summary>
+			public string BackgroundColor { set; get; }
+
 		}
 
 		/// <summary>
@@ -96,7 +101,7 @@ namespace LogMonitoringTool.ViewModels.Result {
 		/// <param name="line">解析前テキストの1行</param>
 		/// <returns>解析したテキストの1行</returns>
 		private string GetResultOfAnalysis( string line ) {
-			return line + "aaaaa";
+			return line;
 		}
 
 		/// <summary>
@@ -110,7 +115,7 @@ namespace LogMonitoringTool.ViewModels.Result {
 
 			string textOfFile = Utils.GetTextOfFile( filePath );
 			foreach( string line in textOfFile.Split( '\n' ) ) {
-				list.Add( new ResultItem() { BeforeTextLine = line , AfterTextLine = this.GetResultOfAnalysis( line ) } );
+				list.Add( new ResultItem() { BeforeTextLine = line , AfterTextLine = this.GetResultOfAnalysis( line ) , BackgroundColor = "Aqua" } );
 			}
 
 			return list;
