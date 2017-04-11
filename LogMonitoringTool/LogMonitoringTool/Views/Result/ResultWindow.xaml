@@ -11,10 +11,6 @@
 	Width="800"
 >
 
-	<Window.DataContext>
-		<vm:ResultViewModel />
-	</Window.DataContext>
-
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition />
@@ -41,7 +37,8 @@
 			<ScrollViewer
 				Grid.Row="1"
 				Grid.Column="0">
-				<TextBox />
+				<TextBox
+					Text="{ Binding TextOfFile }" />
 			</ScrollViewer>
 
 			<Label

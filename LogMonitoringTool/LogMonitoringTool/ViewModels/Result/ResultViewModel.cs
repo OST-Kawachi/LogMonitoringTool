@@ -31,7 +31,16 @@ namespace LogMonitoringTool.ViewModels.Result {
 
 		#endregion
 
-		public ResultViewModel() {
+		/// <summary>
+		/// ファイル内のテキスト
+		/// </summary>
+		public string TextOfFile { set; get; }
+
+		/// <summary>
+		/// コンストラクタ
+		/// </summary>
+		/// <param name="filePath">ファイルパス</param>
+		public ResultViewModel( string filePath ) {
 
 			#region 固定文言
 
@@ -41,6 +50,9 @@ namespace LogMonitoringTool.ViewModels.Result {
 			this.CloseButtonContent = Const.FixedWording.ResultWindow.CloseButton;
 
 			#endregion
+
+			this.TextOfFile = Utils.GetTextOfFile( filePath );
+			
 		}
 
 	}

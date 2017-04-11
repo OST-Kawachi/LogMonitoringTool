@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using LogMonitoringTool.ViewModels.Result;
+using System.Windows;
 
 namespace LogMonitoringTool.Views.Result {
 
@@ -14,6 +15,8 @@ namespace LogMonitoringTool.Views.Result {
 		public ResultWindow( string filePath ) {
 
 			InitializeComponent();
+
+			this.DataContext = new ResultViewModel( filePath );
 						
 		}
 
