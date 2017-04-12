@@ -1,7 +1,12 @@
-﻿using LogMonitoringTool.Commands;
+﻿using LogMonitoringTool.BusinessObject.AnalysisData;
+using LogMonitoringTool.BusinessObject.Risk;
+using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
+using LogMonitoringTool.Services.Risk;
+using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace LogMonitoringTool.ViewModels.Result {
@@ -99,9 +104,28 @@ namespace LogMonitoringTool.ViewModels.Result {
 		/// 受け取ったテキストの1行を解析して返す
 		/// </summary>
 		/// <param name="line">解析前テキストの1行</param>
-		/// <returns>解析したテキストの1行</returns>
-		private string GetResultOfAnalysis( string line ) {
-			return line;
+		/// <param name="result">解析したテキストの1行</param>
+		/// <param name="color">解析したテキストの色</param>
+		private void GetResultOfAnalysis( string line , out string result , out string color ) {
+
+			RiskService riskService = new RiskService();
+
+			result = line;
+			color = "White";
+
+			foreach( AnalysisEntity analysisEntity in AnalysisDataSerializationService.Load() ) {
+				if( Regex.IsMatch( line , analysisEntity.RegularExpression ) ) {
+					result = analysisEntity.Title;
+					foreach( RiskEntity riskEntity in riskService.GetRiskEntities() ) {
+						if( analysisEntity.Risk.Equals( riskEntity.Title ) ) {
+							color = "#00FF44";
+							break;
+						}
+					}
+					break;
+				}
+			}
+
 		}
 
 		/// <summary>
@@ -115,7 +139,10 @@ namespace LogMonitoringTool.ViewModels.Result {
 
 			string textOfFile = Utils.GetTextOfFile( filePath );
 			foreach( string line in textOfFile.Split( '\n' ) ) {
-				list.Add( new ResultItem() { BeforeTextLine = line , AfterTextLine = this.GetResultOfAnalysis( line ) , BackgroundColor = "Aqua" } );
+				string result;
+				string color;
+				this.GetResultOfAnalysis( line , out result , out color );
+				list.Add( new ResultItem() { BeforeTextLine = line , AfterTextLine = result , BackgroundColor = color } );
 			}
 
 			return list;
@@ -140,7 +167,7 @@ namespace LogMonitoringTool.ViewModels.Result {
 
 			this.view = view;
 			this.AnalysisResultItems = this.GetAnalysisResultItems( filePath );
-						
+				
 		}
 
 	}
