@@ -7,6 +7,27 @@ namespace LogMonitoringTool.Services.Risk {
 	/// リスクについてのServiceクラス
 	/// </summary>
 	public class RiskService {
+
+		/// <summary>
+		/// シングルトンパターンによりインスタンスが1つしかない事を保証する
+		/// </summary>
+		private static RiskService singleton = new RiskService();
+
+		/// <summary>
+		/// コンストラクタ
+		/// シングルトンなので外からは呼び出されない
+		/// </summary>
+		private RiskService() {
+
+		}
+
+		/// <summary>
+		/// Serviceクラスのインスタンスを返す
+		/// </summary>
+		/// <returns>インスタンス</returns>
+		public static RiskService GetInstance() {
+			return RiskService.singleton;
+		}
 		
 		/// <summary>
 		/// リスク一覧を返す

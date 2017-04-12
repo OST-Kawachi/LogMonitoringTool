@@ -4,7 +4,6 @@ using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Services.Risk;
 using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
-using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -71,7 +70,7 @@ namespace LogMonitoringTool.ViewModels.Result {
 		/// 対になるView
 		/// </summary>
 		private Window view;
-
+		
 		#region ウィンドウを閉じるコマンドの実装
 
 		/// <summary>
@@ -108,7 +107,7 @@ namespace LogMonitoringTool.ViewModels.Result {
 		/// <param name="color">解析したテキストの色</param>
 		private void GetResultOfAnalysis( string line , out string result , out string color ) {
 
-			RiskService riskService = new RiskService();
+			RiskService riskService = RiskService.GetInstance();
 
 			result = line;
 			color = "White";

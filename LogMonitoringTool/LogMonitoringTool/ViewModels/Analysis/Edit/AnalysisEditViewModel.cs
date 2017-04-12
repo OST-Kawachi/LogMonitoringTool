@@ -242,7 +242,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 			#endregion
 			
 			this.view = view;
-			this.riskService = new RiskService();
+			this.riskService = RiskService.GetInstance();
 
 			this.DecisionButtonContent = this.GetDecisionContent( editedEntity );
 			this.LiskItemsSource = this.GetComboBoxItems();
