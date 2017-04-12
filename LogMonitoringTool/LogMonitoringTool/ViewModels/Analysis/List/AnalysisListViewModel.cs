@@ -230,7 +230,9 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 			this.view = view;
 
-			List<AnalysisEntity> analysisEntities = AnalysisDataSerializationService.Load();
+			AnalysisDataSerializationService service = AnalysisDataSerializationService.GetInstance();
+
+			List<AnalysisEntity> analysisEntities = service.Load();
 			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
 			if( analysisEntities != null ) {
 				foreach( AnalysisEntity item in analysisEntities ) {
