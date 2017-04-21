@@ -1,6 +1,9 @@
-﻿<?xml version="1.0"?>
-<root>
-	<items>
-		<item no="1" title="ログ開始終了位置表示" risk="高" regex="(.)*([0-9])+" info="ログ開始位置を表す　サイズが大きいといろいろある" />
-	</items>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <items>
+    <item no="1" title="ログ開始終了位置表示" risk="高" regex="(.)*([0-9])+" info="ログ開始位置を表す　サイズが大きいといろいろある" />
+    <item no="1" title="解析項目新規作成" risk="0" regex="正規表現" info="ccc" />
+    <item no="2" title="解析項目新規作成" risk="1" regex="正規表現" info="awef" />
+    <item no="3" title="タイトル入力しました" risk="0" regex="正規表現入力しました" info="説明入力しました" />
+  </items>
 </root>

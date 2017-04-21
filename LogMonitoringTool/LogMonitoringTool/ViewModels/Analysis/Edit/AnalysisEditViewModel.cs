@@ -3,6 +3,7 @@ using LogMonitoringTool.BusinessObject.Risk;
 using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Services.Risk;
+using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -190,6 +191,20 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		/// </summary>
 		private void DecisionExecute() {
 
+			AnalysisDataService service = AnalysisDataService.GetInstance();
+			List<AnalysisEntity> entities = service.Load();
+			entities.Add(
+				new AnalysisEntity() {
+					Id = entities.Count ,
+					Title = this.AnalysisTitleText ,
+					Risk = this.AnalysisRiskIndex.ToString() ,
+					RegularExpression = this.AnalysisRegularExpressionText ,
+					Info = this.AnalysisDescriptionText
+				}
+			);
+
+			service.Write( entities );
+			
 			this.view?.Close();
 
 		}
