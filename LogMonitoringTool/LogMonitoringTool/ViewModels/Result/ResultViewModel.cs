@@ -112,7 +112,7 @@ namespace LogMonitoringTool.ViewModels.Result {
 			result = line;
 			color = "White";
 
-			AnalysisDataSerializationService analysisSservice = AnalysisDataSerializationService.GetInstance();
+			AnalysisDataService analysisSservice = AnalysisDataService.GetInstance();
 
 			foreach( AnalysisEntity analysisEntity in analysisSservice.Load() ) {
 				if( Regex.IsMatch( line , analysisEntity.RegularExpression ) ) {

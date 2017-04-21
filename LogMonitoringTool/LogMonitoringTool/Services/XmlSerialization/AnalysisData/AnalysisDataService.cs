@@ -1,4 +1,5 @@
 ﻿using LogMonitoringTool.BusinessObject.AnalysisData;
+using LogMonitoringTool.Common.XmlSerialization;
 using LogMonitoringTool.Model.XmlSerialization;
 using System.Collections.Generic;
 
@@ -7,7 +8,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 	/// <summary>
 	/// 解析データのXMLファイルの読み書きを行う
 	/// </summary>
-	public class AnalysisDataSerializationService {
+	public class AnalysisDataService {
 
 		/// <summary>
 		/// ファイルパス
@@ -17,7 +18,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 		/// <summary>
 		/// シングルトンパターンによりインスタンスが1つしかない事を保証する
 		/// </summary>
-		private static AnalysisDataSerializationService singleton = new AnalysisDataSerializationService();
+		private static AnalysisDataService singleton = new AnalysisDataService();
 
 		/// <summary>
 		/// 解析一覧
@@ -33,7 +34,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 		/// コンストラクタ
 		/// シングルトンなので外からは呼び出されない
 		/// </summary>
-		private AnalysisDataSerializationService() {
+		private AnalysisDataService() {
 			
 			this.serializer = new CustomXmlSerializer();
 
@@ -43,8 +44,8 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 		/// Serviceクラスのインスタンスを返す
 		/// </summary>
 		/// <returns>インスタンス</returns>
-		public static AnalysisDataSerializationService GetInstance() {
-			return AnalysisDataSerializationService.singleton;
+		public static AnalysisDataService GetInstance() {
+			return AnalysisDataService.singleton;
 		}
 		
 		/// <summary>
@@ -58,7 +59,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 				return this.analysises;
 
 			this.analysises = new List<AnalysisEntity>();
-			AnalysisDataXmlModel model = this.serializer.Load<AnalysisDataXmlModel>( AnalysisDataSerializationService.FilePath );
+			AnalysisDataXmlModel model = this.serializer.Load<AnalysisDataXmlModel>( AnalysisDataService.FilePath );
 			if( model != null ) {
 				foreach( AnalysisDataXmlModel.ItemModel item in model.items ) {
 					this.analysises.Add(
@@ -97,7 +98,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 					}
 				);
 			}
-			this.serializer.Write<AnalysisDataXmlModel>( AnalysisDataSerializationService.FilePath , model );
+			this.serializer.Write<AnalysisDataXmlModel>( AnalysisDataService.FilePath , model );
 
 		}
 

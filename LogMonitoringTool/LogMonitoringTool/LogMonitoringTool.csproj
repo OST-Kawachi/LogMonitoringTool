@@ -61,9 +61,9 @@
     <Compile Include="Common\Const.cs" />
     <Compile Include="Common\Utils.cs" />
     <Compile Include="Model\XmlSerialization\AnalysisDataXmlModel.cs" />
-    <Compile Include="Services\Risk\RiskService.cs" />
-    <Compile Include="Services\XmlSerialization\AnalysisData\AnalysisDataSerializationService.cs" />
-    <Compile Include="Services\XmlSerialization\CustomXmlSerializer.cs" />
+    <Compile Include="Services\XmlSerialization\Risk\RiskService.cs" />
+    <Compile Include="Services\XmlSerialization\AnalysisData\AnalysisDataService.cs" />
+    <Compile Include="Common\XmlSerialization\CustomXmlSerializer.cs" />
     <Compile Include="ViewModels\Analysis\Edit\AnalysisEditViewModel.cs" />
     <Compile Include="ViewModels\Analysis\List\AnalysisListViewModel.cs" />
     <Compile Include="ViewModels\Confirmation\ConfirmationViewModel.cs" />

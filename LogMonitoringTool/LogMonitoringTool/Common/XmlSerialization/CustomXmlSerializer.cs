@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace LogMonitoringTool.Services.XmlSerialization {
+namespace LogMonitoringTool.Common.XmlSerialization {
 
 	/// <summary>
 	/// XML読み書きを行う
