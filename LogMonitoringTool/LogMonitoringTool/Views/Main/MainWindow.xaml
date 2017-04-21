@@ -10,12 +10,14 @@
 	Height="200"
 	Width="350" >
 	
+	<!-- ViewModelの設定 -->
 	<Window.DataContext>
 		<vm:MainViewModel />
 	</Window.DataContext>
 	
 	<Grid>
 		
+		<!-- Gridレイアウト -->
 		<Grid.RowDefinitions>
 			<RowDefinition />
 			<RowDefinition />
@@ -27,10 +29,9 @@
 
 		<!-- 選択したログファイル表示欄 -->
 		<TextBox
-			x:Name="LogFileName"
-			Grid.Row="0" 
-			Text="{ Binding SelectedLogFileName }" 
-			IsEnabled="False" />
+			Grid.Row="0"
+			Text="{ Binding SelectedLogFileName }"
+			IsReadOnly="True" />
 
 		<!-- ログファイル参照ボタン -->
 		<Button

@@ -224,8 +224,7 @@ namespace LogMonitoringTool.ViewModels.Main {
 		}
 
 		#endregion
-
-
+		
 		/// <summary>
 		/// コンストラクタ
 		/// </summary>
