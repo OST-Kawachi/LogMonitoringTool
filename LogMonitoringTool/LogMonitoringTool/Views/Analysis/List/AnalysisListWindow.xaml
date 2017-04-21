@@ -18,6 +18,7 @@
 		</Grid.ColumnDefinitions>
 
 		<DataGrid
+			Margin="5,2,2,5"
 			Grid.Column="0"
 			IsReadOnly="True"
 			AutoGenerateColumns="False"
@@ -81,21 +82,25 @@
 			</Grid.RowDefinitions>
 
 			<Button
+				Margin="2,2,5,2"
 				Grid.Row="0"
 				Content="{ Binding NewCreationButtonContent }"
 				Command="{ Binding NewCreationAnalysisCommand }" />
 
 			<Button
+				Margin="2,2,5,2"
 				Grid.Row="1"
 				Content="{ Binding EditButtonContent }"
 				Command="{ Binding EditAnalysisCommand }" />
 
 			<Button
+				Margin="2,2,5,2"
 				Grid.Row="2"
 				Content="{ Binding DeleteButtonContent }"
 				Command="{ Binding DeleteAnalysisCommand }" />
 
 			<Button
+				Margin="2,2,5,2"
 				Grid.Row="3"
 				Content="{ Binding CloseButtonContent }"
 				Command="{ Binding CloseWindowCommand }" />

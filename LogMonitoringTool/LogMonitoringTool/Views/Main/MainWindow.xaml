@@ -7,7 +7,7 @@
 	xmlns:vm="clr-namespace:LogMonitoringTool.ViewModels.Main"
 	mc:Ignorable="d"
 	Title="{ Binding TitleText }"
-	Height="200"
+	Height="250"
 	Width="350" >
 	
 	<!-- ViewModelの設定 -->
@@ -29,36 +29,42 @@
 
 		<!-- 選択したログファイル表示欄 -->
 		<TextBox
+			Margin="5,2,5,2"
 			Grid.Row="0"
 			Text="{ Binding SelectedLogFileName }"
 			IsReadOnly="True" />
 
 		<!-- ログファイル参照ボタン -->
 		<Button
+			Margin="5,2,5,2"
 			Grid.Row="1"
 			Content="{ Binding OpenFileDialogButtonContent }"
 			Command="{ Binding OpenFileDialogCommand }" />
 
 		<!-- ログ内容確認ボタン -->
 		<Button
+			Margin="5,2,5,2"
 			Grid.Row="2"
 			Content="{ Binding ConfirmLogButtonContent }"
 			Command="{ Binding ShowConfirmationDialogCommand }" />
 
 		<!-- 解析項目一覧表示ボタン -->
 		<Button
+			Margin="5,2,5,2"
 			Grid.Row="3"
 			Content="{ Binding DisplayAnalysisListButtonContent }"
 			Command="{ Binding ShowAnalysisListDialogCommand }" />
 
 		<!-- ログ解析開始ボタン -->
 		<Button
+			Margin="5,2,5,2"
 			Grid.Row="4"
 			Content="{ Binding StartLogAnalysisButtonContent }"
 			Command="{ Binding ShowResultDialogCommand }" />
 
 		<!-- 閉じるボタン -->
 		<Button
+			Margin="5,2,5,2"
 			Grid.Row="5"
 			Content="{ Binding CloseButtonContent }"
 			Command="{ Binding ExitAppCommand }" />
