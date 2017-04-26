@@ -85,10 +85,18 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 		}
 
+		private List<AnalysisListDataGridItem> analysisDataGridItemsSource;
 		/// <summary>
 		/// 一覧のItemsSource
 		/// </summary>
-		public List<AnalysisListDataGridItem> AnalysisDataGridItemsSource { set; get; }
+		public List<AnalysisListDataGridItem> AnalysisDataGridItemsSource {
+			set {
+				this.SetProperty<List<AnalysisListDataGridItem>>( ref this.analysisDataGridItemsSource , value , "AnalysisDataGridItemsSource" );
+			}
+			get {
+				return this.analysisDataGridItemsSource;
+			}
+		}
 		
 		/// <summary>
 		/// 対になるView
@@ -119,6 +127,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow();
 			analysisEditWindow.ShowDialog();
+			this.ItemsSourceUpdate();
 
 		}
 
@@ -149,6 +158,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow( 
 				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = "高" , RegularExpression = "aweofiij" , Info = "234234" } );
 			analysisEditWindow.ShowDialog();
+			this.ItemsSourceUpdate();
 
 		}
 
@@ -211,6 +221,31 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		#endregion
 		
 		/// <summary>
+		/// ItemsSourceを更新する
+		/// </summary>
+		private void ItemsSourceUpdate() {
+
+			AnalysisDataService service = AnalysisDataService.GetInstance();
+
+			List<AnalysisEntity> analysisEntities = service.Load();
+			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
+			if( analysisEntities != null ) {
+				foreach( AnalysisEntity item in analysisEntities ) {
+					list.Add(
+						new AnalysisListDataGridItem() {
+							Title = item.Title ,
+							LiskLevel = item.Risk ,
+							RegularExpression = item.RegularExpression ,
+							Detail = item.Info
+						}
+					);
+				}
+			}
+			this.AnalysisDataGridItemsSource = list;
+
+		}
+
+		/// <summary>
 		/// コンストラクタ
 		/// </summary>
 		public AnalysisListViewModel( Window view ) {
@@ -230,23 +265,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 			this.view = view;
 
-			AnalysisDataService service = AnalysisDataService.GetInstance();
-
-			List<AnalysisEntity> analysisEntities = service.Load();
-			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
-			if( analysisEntities != null ) {
-				foreach( AnalysisEntity item in analysisEntities ) {
-					list.Add( 
-						new AnalysisListDataGridItem() {
-							Title = item.Title ,
-							LiskLevel = item.Risk ,
-							RegularExpression = item.RegularExpression ,
-							Detail = item.Info
-						}
-					);
-				}
-			}
-			this.AnalysisDataGridItemsSource = list;
+			this.ItemsSourceUpdate();
 
 		}
 
