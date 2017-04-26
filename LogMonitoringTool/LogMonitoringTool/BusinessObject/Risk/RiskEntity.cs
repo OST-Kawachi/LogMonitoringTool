@@ -1,4 +1,6 @@
-﻿namespace LogMonitoringTool.BusinessObject.Risk {
+﻿using System.Windows.Media;
+
+namespace LogMonitoringTool.BusinessObject.Risk {
 
 	/// <summary>
 	/// リスクについてのEntity
@@ -9,12 +11,17 @@
 		/// <summary>
 		/// ID
 		/// </summary>
-		public int Id;
+		public int Id { set; get; }
 
 		/// <summary>
 		/// リスク名
 		/// </summary>
-		public string Title;
+		public string Title { set; get; }
+
+		/// <summary>
+		/// 色
+		/// </summary>
+		public Color RiskColor { set; get; }
 
 	}
 

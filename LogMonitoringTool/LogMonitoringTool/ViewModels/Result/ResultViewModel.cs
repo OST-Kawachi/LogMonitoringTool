@@ -4,6 +4,7 @@ using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
 using LogMonitoringTool.Services.Risk;
 using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -118,8 +119,9 @@ namespace LogMonitoringTool.ViewModels.Result {
 				if( Regex.IsMatch( line , analysisEntity.RegularExpression ) ) {
 					result = analysisEntity.Title;
 					foreach( RiskEntity riskEntity in riskService.GetRiskEntities() ) {
-						if( analysisEntity.Risk.Equals( riskEntity.Title ) ) {
-							color = "#00FF44";
+						if( analysisEntity.Risk.Equals( riskEntity.Id ) ) {
+							Console.WriteLine( riskEntity.RiskColor.ToString() );
+							color = riskEntity.RiskColor.ToString();
 							break;
 						}
 					}

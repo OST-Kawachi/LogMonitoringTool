@@ -287,7 +287,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 						new AnalysisListDataGridItem() {
 							Id = item.Id ,
 							Title = item.Title ,
-							RiskLevel = riskService.GetRiskTitle( item.Risk ) ,
+							RiskLevel = riskService.GetRiskEntity( item.Risk )?.Title ?? "" ,
 							RegularExpression = item.RegularExpression ,
 							Detail = item.Info
 						}

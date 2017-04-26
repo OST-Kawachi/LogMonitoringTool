@@ -1,5 +1,6 @@
 ﻿using LogMonitoringTool.BusinessObject.Risk;
 using System.Collections.Generic;
+using System.Windows.Media;
 
 namespace LogMonitoringTool.Services.Risk {
 
@@ -25,11 +26,11 @@ namespace LogMonitoringTool.Services.Risk {
 		private RiskService() {
 			
 			this.riskEntities = new List<RiskEntity>() {
-				new RiskEntity() { Id = 0 , Title = "指定なし" } ,
-				new RiskEntity() { Id = 1 , Title = "不明" } ,
-				new RiskEntity() { Id = 2 , Title = "低" } ,
-				new RiskEntity() { Id = 3 , Title = "中" } ,
-				new RiskEntity() { Id = 4 , Title = "高" } ,
+				new RiskEntity() { Id = 0 , Title = "指定なし" , RiskColor = Color.FromRgb( 200 , 200 , 200 ) } ,
+				new RiskEntity() { Id = 1 , Title = "不明" , RiskColor = Color.FromRgb( 200 , 200 , 255 ) } ,
+				new RiskEntity() { Id = 2 , Title = "低" , RiskColor = Color.FromRgb( 200 , 255 , 200 ) } ,
+				new RiskEntity() { Id = 3 , Title = "中" , RiskColor = Color.FromRgb( 255 , 255 , 200 ) } ,
+				new RiskEntity() { Id = 4 , Title = "高" , RiskColor = Color.FromRgb( 255 , 0 , 0 ) } ,
 			};
 			
 		}
@@ -51,20 +52,20 @@ namespace LogMonitoringTool.Services.Risk {
 		}
 
 		/// <summary>
-		/// IDからリスク名を取得する
+		/// IDからRiskEntityを取得する
 		/// </summary>
 		/// <param name="id">リスクID</param>
-		/// <returns>リスクタイトル　当てはまらなければ空文字</returns>
-		public string GetRiskTitle( int id ) {
+		/// <returns>Entity　当てはまらなければnull</returns>
+		public RiskEntity GetRiskEntity( int id ) {
 
 			foreach( RiskEntity entity in this.riskEntities ) {
 				if( id == entity.Id )
-					return entity.Title;
+					return entity;
 			}
-			return "";
+			return null;
 
 		}
-
+		
 		/// <summary>
 		/// リスク名からIDを取得する
 		/// </summary>

@@ -37,8 +37,6 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 		/// シングルトンなので外からは呼び出されない
 		/// </summary>
 		private AnalysisDataService() {
-
-			Console.WriteLine( Directory.GetCurrentDirectory() );
 			
 			this.serializer = new CustomXmlSerializer();
 
