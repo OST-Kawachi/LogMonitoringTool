@@ -1,6 +1,7 @@
 ﻿using LogMonitoringTool.BusinessObject.AnalysisData;
 using LogMonitoringTool.Commands;
 using LogMonitoringTool.Common;
+using LogMonitoringTool.Services.Risk;
 using LogMonitoringTool.Services.XmlSerialization.AnalysisData;
 using LogMonitoringTool.Views.Analysis.Edit;
 using System;
@@ -156,7 +157,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		private void EditAnalysisExecute() {
 
 			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow( 
-				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = "高" , RegularExpression = "aweofiij" , Info = "234234" } );
+				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = 3 , RegularExpression = "aweofiij" , Info = "234234" } );
 			analysisEditWindow.ShowDialog();
 			this.ItemsSourceUpdate();
 
@@ -225,16 +226,17 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		private void ItemsSourceUpdate() {
 
-			AnalysisDataService service = AnalysisDataService.GetInstance();
+			AnalysisDataService analysisDataService = AnalysisDataService.GetInstance();
+			RiskService riskService = RiskService.GetInstance();
 
-			List<AnalysisEntity> analysisEntities = service.Load();
+			List<AnalysisEntity> analysisEntities = analysisDataService.Load();
 			List<AnalysisListDataGridItem> list = new List<AnalysisListDataGridItem>();
 			if( analysisEntities != null ) {
 				foreach( AnalysisEntity item in analysisEntities ) {
 					list.Add(
 						new AnalysisListDataGridItem() {
 							Title = item.Title ,
-							LiskLevel = item.Risk ,
+							LiskLevel = riskService.GetRiskTitle( item.Risk ) ,
 							RegularExpression = item.RegularExpression ,
 							Detail = item.Info
 						}

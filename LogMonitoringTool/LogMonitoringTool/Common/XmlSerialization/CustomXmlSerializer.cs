@@ -37,7 +37,8 @@ namespace LogMonitoringTool.Common.XmlSerialization {
 				}
 
 			}
-			catch( DirectoryNotFoundException ) {
+			catch( DirectoryNotFoundException e ) {
+				Console.WriteLine( "Xml Deserialize Error : " + e );
 				return model = default( ModelType );
 			}
 

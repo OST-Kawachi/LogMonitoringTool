@@ -18,7 +18,7 @@
 		/// <summary>
 		/// 危険度
 		/// </summary>
-		public string Risk { set; get; }
+		public int Risk { set; get; }
 
 		/// <summary>
 		/// 正規表現

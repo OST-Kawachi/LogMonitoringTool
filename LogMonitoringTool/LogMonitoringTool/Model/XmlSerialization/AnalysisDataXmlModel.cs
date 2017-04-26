@@ -30,7 +30,7 @@ namespace LogMonitoringTool.Model.XmlSerialization {
 			/// 危険度
 			/// </summary>
 			[ XmlAttribute( "risk" ) ]
-			public string risk;
+			public int risk;
 
 			/// <summary>
 			/// 正規表現

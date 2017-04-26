@@ -152,7 +152,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 
 			this.AnalysisTitleText = editedEntity?.Title ?? "";
 
-			if( editedEntity != null && editedEntity.Risk != null ) {
+			if( editedEntity != null ) {
 				IEnumerable<RiskEntity> riskList = this.riskService.GetRiskEntities();
 				foreach( RiskEntity entity in riskList ) {
 					if( editedEntity.Risk.Equals( entity.Title ) )
@@ -197,7 +197,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 				new AnalysisEntity() {
 					Id = entities.Count ,
 					Title = this.AnalysisTitleText ,
-					Risk = this.AnalysisRiskIndex.ToString() ,
+					Risk = this.AnalysisRiskIndex ,
 					RegularExpression = this.AnalysisRegularExpressionText ,
 					Info = this.AnalysisDescriptionText
 				}
