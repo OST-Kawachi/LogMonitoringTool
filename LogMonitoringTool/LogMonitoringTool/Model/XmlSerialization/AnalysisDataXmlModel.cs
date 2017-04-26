@@ -17,8 +17,8 @@ namespace LogMonitoringTool.Model.XmlSerialization {
 			/// <summary>
 			/// 連番
 			/// </summary>
-			[ XmlAttribute( "no" ) ]
-			public int no;
+			[ XmlAttribute( "id" ) ]
+			public int id;
 
 			/// <summary>
 			/// タイトル

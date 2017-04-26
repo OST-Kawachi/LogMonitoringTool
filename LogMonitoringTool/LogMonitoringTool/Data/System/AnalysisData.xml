@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <items>
-    <item no="0" title="タイトル入力しました" risk="0" regex="正規表現入力しました" info="説明入力しました" />
-    <item no="1" title="解析項目新規作成" risk="0" regex="正規表現" info="ccc" />
-    <item no="2" title="解析項目新規作成" risk="1" regex="正規表現" info="awef" />
-    <item no="3" title="タイトル入力しました" risk="0" regex="正規表現入力しました" info="説明入力しました" />
-    <item no="4" title="aaaa" risk="2" regex="aweofiij" info="234234" />
-    <item no="5" title="234777777" risk="0" regex="234" info="234" />
-    <item no="6" title="888" risk="0" regex="888" info="888" />
-    <item no="7" title="aaaa" risk="2" regex="aweofiij" info="234234" />
-    <item no="8" title="ewf" risk="0" regex="35465" info="3rtytrewertewrty" />
-    <item no="9" title="234" risk="2" regex="aweofiij" info="234234" />
-    <item no="10" title="234" risk="3" regex="5555" info="555" />
+    <item id="0" title="タイトル入力しました" risk="0" regex="正規表現入力しました" info="説明入力しました" />
+    <item id="1" title="解析項目新規作成" risk="0" regex="正規表現" info="ccc" />
+    <item id="2" title="解析wrf作成" risk="1" regex="正規表現" info="awef" />
+    <item id="3" title="タイトル入力しました!!" risk="2" regex="正規表現入力しました" info="説明入力しました" />
+    <item id="4" title="aaaa" risk="2" regex="aweofiij" info="234234" />
+    <item id="5" title="234777777" risk="0" regex="234" info="234" />
+    <item id="6" title="888" risk="0" regex="888" info="888" />
+    <item id="10" title="234" risk="3" regex="5555" info="555" />
   </items>
 </root>

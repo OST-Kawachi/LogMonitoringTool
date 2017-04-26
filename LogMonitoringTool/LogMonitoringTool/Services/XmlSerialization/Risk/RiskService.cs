@@ -26,9 +26,10 @@ namespace LogMonitoringTool.Services.Risk {
 			
 			this.riskEntities = new List<RiskEntity>() {
 				new RiskEntity() { Id = 0 , Title = "指定なし" } ,
-				new RiskEntity() { Id = 1 , Title = "低" } ,
-				new RiskEntity() { Id = 2 , Title = "中" } ,
-				new RiskEntity() { Id = 3 , Title = "高" } ,
+				new RiskEntity() { Id = 1 , Title = "不明" } ,
+				new RiskEntity() { Id = 2 , Title = "低" } ,
+				new RiskEntity() { Id = 3 , Title = "中" } ,
+				new RiskEntity() { Id = 4 , Title = "高" } ,
 			};
 			
 		}

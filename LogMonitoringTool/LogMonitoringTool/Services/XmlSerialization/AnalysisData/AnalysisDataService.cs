@@ -64,7 +64,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 				foreach( AnalysisDataXmlModel.ItemModel item in model.items ) {
 					this.analysises.Add(
 						new AnalysisEntity() {
-							Id = item.no ,
+							Id = item.id ,
 							Title = item.title ,
 							Risk = item.risk ,
 							RegularExpression = item.regex ,
@@ -90,7 +90,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 			foreach( AnalysisEntity entity in analysises ) {
 				model.items.Add(
 					new AnalysisDataXmlModel.ItemModel() {
-						no = entity.Id ,
+						id = entity.Id ,
 						title = entity.Title ,
 						risk = entity.Risk ,
 						regex = entity.RegularExpression ,

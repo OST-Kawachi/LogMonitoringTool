@@ -181,6 +181,9 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		private void EditAnalysisExecute() {
 
+			if( this.SelectedAnalysisItem == null )
+				return;
+
 			RiskService riskService = RiskService.GetInstance();
 
 			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow( 
@@ -221,8 +224,21 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		private void DeleteAnalysisExecute() {
 
-			Console.WriteLine( "delete" );
+			if( this.SelectedAnalysisItem == null )
+				return;
 
+			AnalysisDataService service = AnalysisDataService.GetInstance();
+			List<AnalysisEntity> entities = service.Load();
+			for( int i = 0 ; i < entities.Count ; i++ ) {
+				if( entities[i].Id == this.SelectedAnalysisItem.Id ) {
+					entities.RemoveAt( i );
+					break;
+				}
+			}
+			service.Write( entities );
+
+			this.ItemsSourceUpdate();
+			
 		}
 
 		#endregion
