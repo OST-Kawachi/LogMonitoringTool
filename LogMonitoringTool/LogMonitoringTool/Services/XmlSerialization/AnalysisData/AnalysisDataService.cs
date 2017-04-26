@@ -1,7 +1,9 @@
 ﻿using LogMonitoringTool.BusinessObject.AnalysisData;
 using LogMonitoringTool.Common.XmlSerialization;
 using LogMonitoringTool.Model.XmlSerialization;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 
@@ -11,9 +13,9 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 	public class AnalysisDataService {
 
 		/// <summary>
-		/// ファイルパス
+		/// 相対ファイルパス
 		/// </summary>
-		private static string FilePath = @"C:\Project\LogMonitoringTool\LogMonitoringTool\LogMonitoringTool\Data\System\AnalysisData.xml";
+		private static string RelativeFilePath = @"\Data\System\AnalysisData.xml";
 
 		/// <summary>
 		/// シングルトンパターンによりインスタンスが1つしかない事を保証する
@@ -35,11 +37,13 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 		/// シングルトンなので外からは呼び出されない
 		/// </summary>
 		private AnalysisDataService() {
+
+			Console.WriteLine( Directory.GetCurrentDirectory() );
 			
 			this.serializer = new CustomXmlSerializer();
 
 		}
-
+		
 		/// <summary>
 		/// Serviceクラスのインスタンスを返す
 		/// </summary>
@@ -59,7 +63,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 				return this.analysises;
 
 			this.analysises = new List<AnalysisEntity>();
-			AnalysisDataXmlModel model = this.serializer.Load<AnalysisDataXmlModel>( AnalysisDataService.FilePath );
+			AnalysisDataXmlModel model = this.serializer.Load<AnalysisDataXmlModel>( Directory.GetCurrentDirectory() + AnalysisDataService.RelativeFilePath );
 			if( model != null ) {
 				foreach( AnalysisDataXmlModel.ItemModel item in model.items ) {
 					this.analysises.Add(
@@ -98,7 +102,7 @@ namespace LogMonitoringTool.Services.XmlSerialization.AnalysisData {
 					}
 				);
 			}
-			this.serializer.Write<AnalysisDataXmlModel>( AnalysisDataService.FilePath , model );
+			this.serializer.Write<AnalysisDataXmlModel>( Directory.GetCurrentDirectory() + AnalysisDataService.RelativeFilePath , model );
 
 		}
 
