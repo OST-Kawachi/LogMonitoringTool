@@ -145,23 +145,19 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 		public string AnalysisDescriptionText { set; get; }
 
 		/// <summary>
+		/// 編集する項目ID
+		/// </summary>
+		public int? EditId { set; get; }
+
+		/// <summary>
 		/// 入力項目の初期表示
 		/// </summary>
 		/// <param name="editedEntity"></param>
 		private void InitInputData( AnalysisEntity editedEntity ) {
 
+			this.EditId = editedEntity?.Id;
 			this.AnalysisTitleText = editedEntity?.Title ?? "";
-
-			if( editedEntity != null ) {
-				IEnumerable<RiskEntity> riskList = this.riskService.GetRiskEntities();
-				foreach( RiskEntity entity in riskList ) {
-					if( editedEntity.Risk.Equals( entity.Title ) )
-						this.AnalysisRiskIndex = entity.Id;
-				}
-			}
-			else
-				this.AnalysisRiskIndex = 0;
-
+			this.AnalysisRiskIndex = editedEntity?.Risk ?? 0;
 			this.AnalysisRegularExpressionText = editedEntity?.RegularExpression ?? "";
 			this.AnalysisDescriptionText = editedEntity?.Info ?? "";
 
@@ -188,20 +184,32 @@ namespace LogMonitoringTool.ViewModels.Analysis.Edit {
 
 		/// <summary>
 		/// 決定コマンドの実装の実行イベント
+		/// EditIdが無ければ新規、あれば編集
 		/// </summary>
 		private void DecisionExecute() {
 
 			AnalysisDataService service = AnalysisDataService.GetInstance();
 			List<AnalysisEntity> entities = service.Load();
-			entities.Add(
-				new AnalysisEntity() {
-					Id = entities.Count ,
-					Title = this.AnalysisTitleText ,
-					Risk = this.AnalysisRiskIndex ,
-					RegularExpression = this.AnalysisRegularExpressionText ,
-					Info = this.AnalysisDescriptionText
+
+			AnalysisEntity editedEntity = new AnalysisEntity() {
+				Title = this.AnalysisTitleText ,
+				Risk = this.AnalysisRiskIndex ,
+				RegularExpression = this.AnalysisRegularExpressionText ,
+				Info = this.AnalysisDescriptionText
+			};
+
+			if( this.EditId.HasValue ) {
+				editedEntity.Id = this.EditId.Value;
+				for( int i = 0 ; i < entities.Count ; i++ ) {
+					if( entities[i].Id == editedEntity.Id ) {
+						entities[i] = editedEntity;
+					}
 				}
-			);
+			}
+			else {
+				editedEntity.Id = entities.Count;
+				entities.Add( editedEntity );
+			}
 
 			service.Write( entities );
 			

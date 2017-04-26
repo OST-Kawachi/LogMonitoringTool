@@ -22,7 +22,8 @@
 			Grid.Column="0"
 			IsReadOnly="True"
 			AutoGenerateColumns="False"
-			ItemsSource="{ Binding AnalysisDataGridItemsSource }" >
+			ItemsSource="{ Binding AnalysisDataGridItemsSource }" 
+			SelectedItem="{ Binding SelectedAnalysisItem }">
 			<DataGrid.Columns>
 				<DataGridTemplateColumn
 					Header="タイトル"
@@ -45,7 +46,7 @@
 					<DataGridTemplateColumn.CellTemplate>
 						<DataTemplate>
 							<TextBlock
-								Text="{Binding LiskLevel }">
+								Text="{Binding RiskLevel }">
 								<TextBlock.ToolTip>
 									<TextBlock
 										Text="{Binding Detail }" />

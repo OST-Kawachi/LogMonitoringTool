@@ -65,6 +65,11 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		public class AnalysisListDataGridItem {
 
 			/// <summary>
+			/// ID
+			/// </summary>
+			public int Id { set; get; }
+
+			/// <summary>
 			/// タイトル
 			/// </summary>
 			public string Title { set; get; }
@@ -72,7 +77,7 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 			/// <summary>
 			/// リスク
 			/// </summary>
-			public string LiskLevel { set; get; }
+			public string RiskLevel { set; get; }
 
 			/// <summary>
 			/// 正規表現
@@ -86,6 +91,26 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 
 		}
 
+		/// <summary>
+		/// 一覧上で選択しているItem
+		/// </summary>
+		private AnalysisListDataGridItem selectedAnalysisItem;
+
+		/// <summary>
+		/// 一覧上で選択しているItem
+		/// </summary>
+		public AnalysisListDataGridItem SelectedAnalysisItem {
+			set {
+				this.SetProperty<AnalysisListDataGridItem>( ref this.selectedAnalysisItem , value , "SelectedAnalysisItem" );
+			}
+			get {
+				return this.selectedAnalysisItem;
+			}
+		}
+
+		/// <summary>
+		/// 一覧のItemsSource
+		/// </summary>
 		private List<AnalysisListDataGridItem> analysisDataGridItemsSource;
 		/// <summary>
 		/// 一覧のItemsSource
@@ -156,8 +181,17 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 		/// </summary>
 		private void EditAnalysisExecute() {
 
+			RiskService riskService = RiskService.GetInstance();
+
 			AnalysisEditWindow analysisEditWindow = new AnalysisEditWindow( 
-				new AnalysisEntity() { Id = 0 , Title = "aaaa" , Risk = 3 , RegularExpression = "aweofiij" , Info = "234234" } );
+				new AnalysisEntity() {
+					Id = this.SelectedAnalysisItem.Id ,
+					Title = this.SelectedAnalysisItem.Title ,
+					Risk = riskService.GetRiskId( this.SelectedAnalysisItem.RiskLevel ) ,
+					RegularExpression = this.SelectedAnalysisItem.RegularExpression ,
+					Info = this.SelectedAnalysisItem.Detail
+				} 
+			);
 			analysisEditWindow.ShowDialog();
 			this.ItemsSourceUpdate();
 
@@ -235,8 +269,9 @@ namespace LogMonitoringTool.ViewModels.Analysis.List {
 				foreach( AnalysisEntity item in analysisEntities ) {
 					list.Add(
 						new AnalysisListDataGridItem() {
+							Id = item.Id ,
 							Title = item.Title ,
-							LiskLevel = riskService.GetRiskTitle( item.Risk ) ,
+							RiskLevel = riskService.GetRiskTitle( item.Risk ) ,
 							RegularExpression = item.RegularExpression ,
 							Detail = item.Info
 						}

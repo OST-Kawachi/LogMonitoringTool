@@ -64,6 +64,25 @@ namespace LogMonitoringTool.Services.Risk {
 
 		}
 
+		/// <summary>
+		/// リスク名からIDを取得する
+		/// </summary>
+		/// <param name="riskTitle">リスク名</param>
+		/// <returns>ID　当てはまらなければ-1</returns>
+		public int GetRiskId( string riskTitle ) {
+
+			if( string.IsNullOrEmpty( riskTitle ) )
+				return -1;
+
+			foreach( RiskEntity entity in this.riskEntities ) {
+				if( entity.Title.Equals( riskTitle ) )
+					return entity.Id;
+			}
+
+			return -1;
+
+		}
+
 	}
 
 }
